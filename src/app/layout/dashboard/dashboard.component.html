@@ -1,123 +1,102 @@
 <div [@routerTransition]>
-    <h2 class="text-muted">Mortgage <small>Details</small></h2>
+    <h2 class="text-muted">Personal <small>Details</small></h2>
     
     <div class="row">
 
         <div class="col-lg-6">
 
-            <form role="form">
+            <form  [formGroup] = "userInfo" novalidate (ngSubmit)="onSubmit(userInfo)">
                 <fieldset class="form-group">
-                    <label>Text Input</label>
-                    <input class="form-control">
-                    <p class="help-block">Example block-level help text here.</p>
+                    <label>Name</label>
+                    <input class="form-control" formControlName="name" >
+                   
                 </fieldset>
 
                 <fieldset class="form-group">
-                    <label>Text Input with Placeholder</label>
-                    <input class="form-control" placeholder="Enter text">
-                </fieldset>
-
-                <div class="form-group">
-                    <label>Static Control</label>
-                    <p class="form-control-static">email@example.com</p>
-                </div>
-
-                <fieldset class="form-group">
-                    <label for="exampleInputFile">File input</label>
-                    <input type="file" class="form-control-file" id="exampleInputFile">
+                    <label>Phone</label>
+                    <input class="form-control" formControlName="phone" >
+                   
                 </fieldset>
 
                 <fieldset class="form-group">
-                    <label>Text area</label>
-                    <textarea class="form-control" rows="3"></textarea>
-                </fieldset>
-
-                <div class="form-group">
-                    <label>Checkboxes</label>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value=""> Checkbox 1
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value=""> Checkbox 2
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value=""> Checkbox 3
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Inline Checkboxes</label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox">1
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox">2
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox">3
-                    </label>
-                </div>
-
-                <fieldset class="form-group">
-                    <label>Radio Buttons</label>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""> Radio 1
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Radio 2
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3"> Radio 3
-                        </label>
-                    </div>
+                    <label>Salary</label>
+                    <input class="form-control" formControlName="salary" >
+                   
                 </fieldset>
 
                 <fieldset class="form-group">
-                    <label>Inline Radio Buttons</label>
-                    <label class="radio-inline">
-                        <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked="">1
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">2
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">3
-                    </label>
+                    <label>Email</label>
+                    <input class="form-control" formControlName="email" >
+                   
                 </fieldset>
 
-                <div class="form-group">
+               
+
+                 <fieldset class="form-group">
+                     <label>Address</label>
+                    <textarea class="form-control" rows="3" placeholder="Address" formControlName="address"></textarea>
+                </fieldset>
+
+                 <fieldset class="form-group">
+                     
                     <label>Selects</label>
                     <select class="form-control">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                        <option>PAN Card</option>
+                        <option>Aadhar Card</option>
+                        <option>Driving Licence</option>
+                        <option>Passport</option>
+                      
                     </select>
-                </div>
-
-                <fieldset class="form-group">
-                    <label>Multiple Selects</label>
-                    <select multiple="" class="form-control">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
+               
+                    <label for="exampleInputFile">Documents</label>
+                    <!--<input type="file" class="form-control-file" id="exampleInputFile">-->
+                    <input type="file" ng2FileSelect [userInfo.uploader]="uploader" />
                 </fieldset>
 
+
+                 <table class="table">
+                <thead>
+                <tr>
+                    <th width="50%">Name</th>
+                    <th>Size</th>
+                    <th>Progress</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of uploader.queue">
+                    <td><strong>{{ item?.file?.name }}</strong></td>
+                    <td *ngIf="uploader.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                    <td *ngIf="uploader.isHTML5">
+                        <div class="progress" style="margin-bottom: 0;">
+                            <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                        <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                        <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                    </td>
+                    <td nowrap>
+                        <button type="button" class="btn btn-success btn-xs"
+                                (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                            <span class="glyphicon glyphicon-upload"></span> Upload
+                        </button>
+                        <button type="button" class="btn btn-warning btn-xs"
+                                (click)="item.cancel()" [disabled]="!item.isUploading">
+                            <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                        </button>
+                        <button type="button" class="btn btn-danger btn-xs"
+                                (click)="item.remove()">
+                            <span class="glyphicon glyphicon-trash"></span> Remove
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+               
                 <button type="submit" class="btn btn-secondary">Submit Button</button>
                 <button type="reset" class="btn btn-secondary">Reset Button</button>
 
@@ -125,9 +104,6 @@
 
         </div>
         
-     
+     <p>Form value: {{ userInfo.value | json }}</p>
     
 </div>
-
-
-

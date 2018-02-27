@@ -1,8 +1,8 @@
 <div class="login-page" [@routerTransition]>
     <div class="row justify-content-md-center">
-        <div class="col-md-4">
+        <div class="col-lg-4">
             <img src="assets/images/logo.png" width="150px" class="user-avatar" />
-            <h1>Scotia Mortgage</h1>
+            <h1><i style="font-size:65px">e</i>Mortgage</h1>
             <form role="form">
                 <div class="form-content">
                     <div class="form-group">
@@ -16,6 +16,8 @@
                 <a class="btn rounded-btn" [routerLink]="['/dashboard']" (click)="onLoggedin()"> Log in </a>
                 &nbsp;
                 <a class="btn rounded-btn" [routerLink]="['/signup']">Register</a>
+                 &nbsp;
+                <a class="btn rounded-btn" [routerLink]="['/signup']">Google Signin</a>
             </form>
         </div>
     </div>
