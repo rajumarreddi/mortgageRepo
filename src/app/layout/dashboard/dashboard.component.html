@@ -37,7 +37,7 @@
                     <textarea class="form-control" rows="3" placeholder="Address" formControlName="address"></textarea>
                 </fieldset>
 
-                 <fieldset class="form-group">
+               <fieldset class="form-group">
                      
                     <label>Selects</label>
                     <select class="form-control">
@@ -49,8 +49,8 @@
                     </select>
                
                     <label for="exampleInputFile">Documents</label>
-                    <!--<input type="file" class="form-control-file" id="exampleInputFile">-->
-                    <input type="file" ng2FileSelect [userInfo.uploader]="uploader" />
+                   <!--<input type="file" class="form-control-file" id="exampleInputFile">-->
+                    <input type="file" ng2FileSelect [uploader]="uploader" />
                 </fieldset>
 
 
@@ -99,11 +99,11 @@
                
                 <button type="submit" class="btn btn-secondary">Submit Button</button>
                 <button type="reset" class="btn btn-secondary">Reset Button</button>
-
+   <p>Form value: {{ userInfo.value | json }}</p>
             </form>
 
         </div>
         
-     <p>Form value: {{ userInfo.value | json }}</p>
+  
     
 </div>
