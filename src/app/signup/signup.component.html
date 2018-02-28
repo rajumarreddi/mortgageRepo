@@ -1,26 +1,30 @@
 <div class="login-page" [@routerTransition]>
     <div class="row justify-content-md-center">
         <div class="col-lg-4">
-            <img class="user-avatar" src="assets/images/logo.png" width="150px" />
+            <img class="user-avatar" src="assets/images/logo.png" width="115px" />
             <h1>Mortgage User Registration</h1>
-            <form role="form">
+            <form [formGroup]="signupModel"  (ngSubmit)="onSubmit(signupModel)">
                 <div class="form-content">
                     <div class="form-group">
-                        <input type="text" class="form-control input-underline input-lg" id="" placeholder="Full Name">
+                         <input type="text"  formControlName="fullName" class="form-control input-underline input-lg" placeholder="Full Name">
+                        <!--<input type="text" class="form-control input-underline input-lg" id="" placeholder="Full Name">-->
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control input-underline input-lg" id="" placeholder="Email">
+                        <input type="text"  formControlName="email" class="form-control input-underline input-lg" placeholder="Email">
+                        <!--<input type="text" class="form-control input-underline input-lg" id="" placeholder="Email">-->
                     </div>
 
                     <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Password">
+                        <input type="password"  formControlName="password" class="form-control input-underline input-lg" placeholder="Password">
+                        <!--<input type="password" class="form-control input-underline input-lg" id="" placeholder="Password">-->
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Repeat Password">
+                        <input type="password" formControlName="repeatPassword" class="form-control input-underline input-lg"  placeholder="Repeat Password">
                     </div>
                 </div>
-                <a class="btn rounded-btn" [routerLink]="['/dashboard']"> Register </a>&nbsp;
+                 <!--<a class="btn rounded-btn" (click)="onSubmit(loginModel)"   [routerLink]="['/dashboard']"> Log in </a>-->
+                <a class="btn rounded-btn" (click)="onSubmit(signupModel)"  [routerLink]="['/login']"> Register </a>&nbsp;
                 <a class="btn rounded-btn" [routerLink]="['/login']"> Log in </a>
             </form>
         </div>
