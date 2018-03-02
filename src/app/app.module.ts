@@ -10,6 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+//import { MapsAPILoader } from "@agm/core";
+// import {MapsAPILoader} from "@angular2-google-maps/core";
 
 import { LoginModel } from "./login/login.model";
 import { LoginService } from "./http-service/login-service";
@@ -36,7 +38,7 @@ export function createTranslateLoader(http: HttpClient) {
         HttpClientModule,
         FormsModule,HttpModule,
         ReactiveFormsModule,
-       
+            
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

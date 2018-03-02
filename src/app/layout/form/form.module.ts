@@ -4,12 +4,12 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { FormRoutingModule } from './form-routing.module';
 import { FormComponent } from './form.component';
 import { PageHeaderModule } from './../../shared';
-import { MapsAPILoader, GoogleMapsAPIWrapper } from "@agm/core";
+//import { MapsAPILoader } from "@agm/core";
 
 @NgModule({
     imports: [CommonModule, FormRoutingModule,
         FormsModule, ReactiveFormsModule, PageHeaderModule],
     declarations: [FormComponent],
-    providers:[GoogleMapsAPIWrapper]
+    providers:[]
 })
 export class FormModule {}
