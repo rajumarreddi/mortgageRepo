@@ -3,25 +3,53 @@
         <div class="col-lg-4">
             <img src="assets/images/logo.png" width="110px" class="user-avatar" />
             <h1><i style="font-size:65px">e</i>Mortgage</h1>
-            <form [formGroup]="loginModel"  (ngSubmit)="onSubmit(loginModel)">
+           <!--(ngSubmit)="onSubmit(loginModel)"-->
+            <form [formGroup]="loginModel"  novalidate > 
+                 <!--<div *ngIf="alertFlag">
+      Invalid User. Please try again...
+    </div>-->
                 <div class="form-content">
-                    <div class="form-group">
-                          <input formControlName="email" placeholder="Email" class="form-control input-underline input-lg">
+                    <div class="form-group" id="userid_div">
+                          <input formControlName="emailId" placeholder="Email" [pattern]="emailPattern" class="form-control input-underline input-lg">
                         <!--<input type="text" ng-model="name" class="form-control input-underline input-lg" id="" placeholder="Email">-->
+                        
+                        <div *ngIf="!loginModel.controls.emailId?.valid && 
+                        (loginModel.controls.emailId?.dirty ||loginModel.controls.emailId?.touched)">
+                            <div *ngIf="loginModel.controls['emailId'].hasError('required')">
+                                Please enter Email Id
+                            </div> 
+                            <div *ngIf="loginModel.controls['emailId'].errors.pattern">
+                                Please enter a valid Email Id
+                            </div> 
+                        </div>
+
                     </div>
 
                     <div class="form-group">
                          <input type="password"  formControlName="password" class="form-control input-underline input-lg" placeholder="Password">
                         <!--<input type="password" class="form-control input-underline input-lg" id="" placeholder="Password">-->
+
+                        <div *ngIf="!loginModel.controls.password?.valid && 
+                            (loginModel.controls.password?.dirty ||loginModel.controls.password?.touched)">
+                            <div *ngIf="loginModel.controls['password'].hasError('required')">
+                                Please enter password
+                            </div>
+                            <div *ngIf="loginModel.controls['password'].hasError('minlength')">
+                                Please enter atleast 8 chars
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
                   <!--<button type="submit" class="btn rounded-btn">Log in </button>-->
-                
-               <a class="btn rounded-btn" (click)="onSubmit(loginModel)"   [routerLink]="['/dashboard']"> Log in </a>
+                <!--[routerLink]="['/dashboard']"-->
+               <button class="btn rounded-btn" (click)="onSubmit(loginModel)"  [disabled]="!loginModel.valid" > Log in </button>
                  &nbsp;
                 <a class="btn rounded-btn" [routerLink]="['/signup']">Register</a>
                  &nbsp;
-                <a class="btn rounded-btn" [routerLink]="['/signup']">Google Signin</a>
+                <!--<a class="btn rounded-btn" [routerLink]="['/login']">Google Signin</a>-->
+               <a class="btn rounded-btn" (click)="googleLogin()">Google Signin</a>
             </form>
         </div>
     </div>

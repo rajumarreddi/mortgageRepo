@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { LoginService } from "../../../http-service/login-service";
+import { LoginModel } from "../../../login/login.model";
 
 @Component({
     selector: 'app-sidebar',
@@ -11,8 +13,9 @@ export class SidebarComponent {
     isActive: boolean = false;
     showMenu: string = '';
     pushRightClass: string = 'push-right';
+   loginObj:LoginModel=new LoginModel();
 
-    constructor(private translate: TranslateService, public router: Router) {
+    constructor(private translate: TranslateService, public router: Router,private loginService:LoginService) {
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de']);
         this.translate.setDefaultLang('en');
         const browserLang = this.translate.getBrowserLang();
@@ -27,6 +30,7 @@ export class SidebarComponent {
                 this.toggleSidebar();
             }
         });
+        this.loginObj=this.loginService.loginObj;
     }
 
     eventCalled() {

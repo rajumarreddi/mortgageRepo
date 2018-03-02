@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
     public alerts: Array<any> = [];
     public sliders: Array<any> = [];
     userInfo:FormGroup;
-     public uploader:FileUploader = new FileUploader({url: URL});
+    public uploader:FileUploader = new FileUploader({url: URL});
 
     constructor(private fb:FormBuilder) {
        
