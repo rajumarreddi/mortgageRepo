@@ -10,8 +10,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
-import { MapsAPILoader } from "@agm/core";
-
+//import { MapsAPILoader } from "@agm/core";
+// import {MapsAPILoader} from "@angular2-google-maps/core";
+import { HttpModule } from '@angular/http';
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
     // for development
@@ -27,6 +28,7 @@ export function createTranslateLoader(http: HttpClient) {
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
+        HttpModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

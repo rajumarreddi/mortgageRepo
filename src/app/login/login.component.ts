@@ -15,14 +15,7 @@ export class LoginComponent implements OnInit {
     constructor(public router: Router,private fb:FormBuilder) {
         this.createForm();
     }
-
     ngOnInit() {}
-
-    onLoggedin() {
-        localStorage.setItem('isLoggedin', 'true');
-    }
-
-
      onSubmit({ value, valid }: { value: LoginModel, valid: boolean }){
     console.log(value.email);
     
