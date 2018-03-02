@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 
+
 const routes: Routes = [
-    
-    { path: '', loadChildren: './layout/layout.module#LayoutModule'},
+    // ,canActivate: [AuthGuard]
+    { path: '', loadChildren: './layout/layout.module#LayoutModule',canActivate: [AuthGuard]},//,canActivate: [AuthGuard]
+    { path: 'dashboard', loadChildren: './layout/layout.module#LayoutModule',canActivate: [AuthGuard]},
     // { path: '', loadChildren: './login/login.module#LoginModule' },
-    { path: 'login', loadChildren: './login/login.module#LoginModule' },
+    { path: 'login', loadChildren: './login/login.module#LoginModule'},
     { path: 'signup', loadChildren: './signup/signup.module#SignupModule' },
     { path: 'error', loadChildren: './server-error/server-error.module#ServerErrorModule' },
     { path: 'access-denied', loadChildren: './access-denied/access-denied.module#AccessDeniedModule' },

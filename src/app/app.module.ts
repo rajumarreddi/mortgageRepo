@@ -12,7 +12,17 @@ import { AuthGuard } from './shared';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 //import { MapsAPILoader } from "@agm/core";
 // import {MapsAPILoader} from "@angular2-google-maps/core";
+
+import { LoginModel } from "./login/login.model";
+import { LoginService } from "./http-service/login-service";
 import { HttpModule } from '@angular/http';
+import { LoginDataService } from "./login/logindataservice";
+import { AuthService } from "angular2-social-login/dist";
+import { MapsAPILoader } from "@agm/core";
+
+
+
+
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
     // for development
@@ -26,9 +36,9 @@ export function createTranslateLoader(http: HttpClient) {
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
-        FormsModule,
+        FormsModule,HttpModule,
         ReactiveFormsModule,
-        HttpModule,
+            
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -39,7 +49,7 @@ export function createTranslateLoader(http: HttpClient) {
         AppRoutingModule
     ],
     declarations: [AppComponent],
-    providers: [AuthGuard],
+    providers: [AuthGuard,LoginService,LoginModel,LoginDataService,AuthService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

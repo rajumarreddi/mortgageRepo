@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { LoginService } from "../../../http-service/login-service";
+import { LoginModel } from "../../../login/login.model";
+import { LoginDataService } from "../../../login/logindataservice";
 
 @Component({
     selector: 'app-header',
@@ -9,8 +12,11 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class HeaderComponent implements OnInit {
     pushRightClass: string = 'push-right';
-
-    constructor(private translate: TranslateService, public router: Router) {
+loginModel:LoginModel=new LoginModel();
+name:String;
+image:String;
+findimage:boolean;
+    constructor(private translate: TranslateService, public router: Router,private loginService:LoginService,private logindataService:LoginDataService) {
 
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de', 'zh-CHS']);
         this.translate.setDefaultLang('en');
@@ -26,9 +32,23 @@ export class HeaderComponent implements OnInit {
                 this.toggleSidebar();
             }
         });
+         console.log("service in header comp"+this.loginService.loginObj);
+        this.loginModel=this.loginService.loginObj;
+     
+        console.log("name in header comp"+this.name);
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+         this.name=this.logindataService.userName;
+         this.image=this.logindataService.image;
+         if(this.image!=null){
+            this.findimage=true;
+         }else{
+             this.findimage=false;
+         }
+         
+         console.log("Image URL>>>>"+this.image);
+    }
 
     isToggled(): boolean {
         const dom: Element = document.querySelector('body');

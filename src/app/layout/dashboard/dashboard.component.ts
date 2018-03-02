@@ -11,16 +11,20 @@ const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
     animations: [routerTransition()]
 })
 export class DashboardComponent implements OnInit {
-    public alerts : Array<any> = [];
-    public sliders : Array<any> = [];
-    userInfo : FormGroup;
+
+    public alerts: Array<any> = [];
+    public sliders: Array<any> = [];
+    userInfo:FormGroup;
+    public uploader:FileUploader = new FileUploader({url: URL});
+
+   
     //namePattern = "^[a-zA-Z\s]+$";
     //phonePattern = "^[+]?[0-9]{0,1}[-. ]?\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$";
     //salaryPattern : "/^\d{1,6}(?:\.\d{0,2})?$/"; // Optional dot and two decimal numbers
     //salaryPattern : "/^\d{1,6}\.\d{0,2}$/"; // required dot and two decimal numbers
     //emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}";
     //addressPattern = "\d{1,5}\s\w.\s(\b\w*\b\s){1,2}\w*\.";
-    public uploader : FileUploader = new FileUploader({url : URL});
+    
 
     constructor(private fb:FormBuilder) {
       
@@ -54,7 +58,6 @@ export class DashboardComponent implements OnInit {
     }
 
     
-
     reset() {
         this.userInfo.reset();
     }
