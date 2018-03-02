@@ -1,109 +1,164 @@
 <div [@routerTransition]>
     <h2 class="text-muted">Personal <small>Details</small></h2>
-    
     <div class="row">
-
         <div class="col-lg-6">
-
-            <form  [formGroup] = "userInfo" novalidate (ngSubmit)="onSubmit(userInfo)">
+            <form [formGroup]="userInfo" novalidate>
                 <fieldset class="form-group">
-                    <label>Name</label>
-                    <input class="form-control" formControlName="name" >
-                   
+                    <label>Name <span style="color: red">*</span></label>
+                    <input id="name" class="form-control" formControlName="name" required >
+                    <div *ngIf="!userInfo.controls.name?.valid && (userInfo.controls.name?.dirty || userInfo.controls.name?.touched)">
+                        <div *ngIf="userInfo.controls['name'].hasError('required')" class="alert alert-danger">
+                            Please enter User Name
+                        </div>
+                        <!--<div *ngIf="userInfo.controls['name'].hasError('minlength')" class="alert alert-danger">
+                            Please enter atleast 8 chars
+                        </div>
+                        <div *ngIf="userInfo.controls['name'].hasError('maxlength')" class="alert alert-danger">
+                            Please enter maximum limit of 16 chars
+                        </div>
+                        <div *ngIf="userInfo.controls['name'].hasError('pattern')" class="alert alert-danger">
+                            Please enter Alphbets only
+                        </div>-->
+                    </div>
                 </fieldset>
 
                 <fieldset class="form-group">
-                    <label>Phone</label>
-                    <input class="form-control" formControlName="phone" >
-                   
+                    <label>Phone <span style="color: red">*</span></label>
+                    <input class="form-control" formControlName="phone">
+                    <div *ngIf="!userInfo.controls.phone?.valid && (userInfo.controls.phone?.dirty || userInfo.controls.phone?.touched)">
+                        <div *ngIf="userInfo.controls['phone'].hasError('required')" class="alert alert-danger">
+                            Please enter Phone Number
+                        </div>
+                        <!--<div *ngIf="userInfo.controls['phone'].hasError('minlength')" class="alert alert-danger">
+                            Please enter atleast 12 chars
+                        </div>
+                        <div *ngIf="userInfo.controls['phone'].hasError('maxlength')" class="alert alert-danger">
+                            The maximum limit for userId is 14 chars
+                        </div>
+                        <div *ngIf="userInfo.controls['phone'].hasError('pattern')" class="alert alert-danger">
+                            Please enter Numerics with special characters "(" & ")"
+                        </div>-->
+                    </div>
                 </fieldset>
 
                 <fieldset class="form-group">
-                    <label>Salary</label>
-                    <input class="form-control" formControlName="salary" >
-                   
+                    <label>Salary <span style="color: red">*</span></label>
+                    <input class="form-control" formControlName="salary">
+                    <div *ngIf="!userInfo.controls.salary?.valid && (userInfo.controls.salary?.dirty || userInfo.controls.salary?.touched)">
+                        <div *ngIf="userInfo.controls['salary'].hasError('required')" class="alert alert-danger">
+                            Please enter Salary
+                        </div>
+                        <!--<div *ngIf="userInfo.controls['salary'].hasError('minlength')" class="alert alert-danger">
+                            Please enter atleast 12 chars
+                        </div>
+                        <div *ngIf="userInfo.controls['salary'].hasError('maxlength')" class="alert alert-danger">
+                            The maximum limit for userId is 14 chars
+                        </div>
+                        <div *ngIf="userInfo.controls['salary'].hasError('pattern')" class="alert alert-danger">
+                            Please enter Numerics along with '$' symbol
+                        </div>-->
+                    </div>
                 </fieldset>
 
                 <fieldset class="form-group">
-                    <label>Email</label>
-                    <input class="form-control" formControlName="email" >
-                   
+                    <label>Email <span style="color: red">*</span></label>
+                    <input class="form-control" formControlName="email">
+                    <div *ngIf="!userInfo.controls.email?.valid && (userInfo.controls.email?.dirty || userInfo.controls.email?.touched)">
+                        <div *ngIf="userInfo.controls['email'].hasError('required')" class="alert alert-danger">
+                            Please enter EmailId
+                        </div>
+                        <!--<div *ngIf="userInfo.controls['email'].hasError('minlength')" class="alert alert-danger">
+                            Please enter atleast 8 chars
+                        </div>
+                        <div *ngIf="userInfo.controls['email'].hasError('maxlength')" class="alert alert-danger">
+                            Please enter maximum limit of 16 chars
+                        </div>
+                        <div *ngIf="userInfo.controls['email'].hasError('pattern')" class="alert alert-danger">
+                            Please enter Alphbets only
+                        </div>-->
+                    </div>
                 </fieldset>
 
-               
-
-                 <fieldset class="form-group">
-                     <label>Address</label>
-                    <textarea class="form-control" rows="3" placeholder="Address" formControlName="address"></textarea>
+                <fieldset class="form-group">
+                    <label>Address <span style="color: red">*</span></label>
+                    <textarea class="form-control" rows="3" placeholder="Please Enter Address here.." formControlName="address" ></textarea>
+                     <div *ngIf="!userInfo.controls.address?.valid && (userInfo.controls.address?.dirty || userInfo.controls.address?.touched)">
+                        <div *ngIf="userInfo.controls['address'].hasError('required')" class="alert alert-danger">
+                            Please enter Address
+                        </div>
+                        <!--<div *ngIf="userInfo.controls['address'].hasError('minlength')" class="alert alert-danger">
+                            Please enter atleast 8 chars
+                        </div>
+                        <div *ngIf="userInfo.controls['address'].hasError('maxlength')" class="alert alert-danger">
+                            Please enter maximum limit of 16 chars
+                        </div>
+                        <div *ngIf="userInfo.controls['address'].hasError('pattern')" class="alert alert-danger">
+                            Please enter Alphbets only
+                        </div>-->
+                    </div>
                 </fieldset>
-
-               <fieldset class="form-group">
-                     
-                    <label>Selects</label>
-                    <select class="form-control">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Select Document</label>
+                        <select class="form-control">
+                         <option selected>Select Upload Document</option>
                         <option>PAN Card</option>
                         <option>Aadhar Card</option>
                         <option>Driving Licence</option>
-                        <option>Passport</option>
-                      
+                        <option>Passport</option>                      
                     </select>
-               
-                    <label for="exampleInputFile">Documents</label>
-                   <!--<input type="file" class="form-control-file" id="exampleInputFile">-->
-                    <input type="file" ng2FileSelect [uploader]="uploader" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>&nbsp;&nbsp;&nbsp;</label>
+                        <input type="file" ng2FileSelect [uploader]="uploader" />
+                    </div>
+                </div>
+
+                <fieldset class="form-group">
+                    <label>Uploaded Docs</label>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th width="50%">Name</th>
+                                <th>Size</th>
+                                <th>Progress</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of uploader.queue">
+                                <td><strong>{{ item?.file?.name }}</strong></td>
+                                <td *ngIf="uploader.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                                <td *ngIf="uploader.isHTML5">
+                                    <div class="progress" style="margin-bottom: 0;">
+                                        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                    <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                    <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                                </td>
+                                <td nowrap>
+                                    <button type="button" class="btn btn-success btn-xs" (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                                        <span class="glyphicon glyphicon-upload"></span> Upload
+                                    </button>
+                                    <button type="button" class="btn btn-warning btn-xs" (click)="item.cancel()" [disabled]="!item.isUploading">
+                                        <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-xs" (click)="item.remove()">
+                                        <span class="glyphicon glyphicon-trash"></span> Remove
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </fieldset>
-
-
-                 <table class="table">
-                <thead>
-                <tr>
-                    <th width="50%">Name</th>
-                    <th>Size</th>
-                    <th>Progress</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let item of uploader.queue">
-                    <td><strong>{{ item?.file?.name }}</strong></td>
-                    <td *ngIf="uploader.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
-                    <td *ngIf="uploader.isHTML5">
-                        <div class="progress" style="margin-bottom: 0;">
-                            <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
-                        </div>
-                    </td>
-                    <td class="text-center">
-                        <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
-                        <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
-                        <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
-                    </td>
-                    <td nowrap>
-                        <button type="button" class="btn btn-success btn-xs"
-                                (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
-                            <span class="glyphicon glyphicon-upload"></span> Upload
-                        </button>
-                        <button type="button" class="btn btn-warning btn-xs"
-                                (click)="item.cancel()" [disabled]="!item.isUploading">
-                            <span class="glyphicon glyphicon-ban-circle"></span> Cancel
-                        </button>
-                        <button type="button" class="btn btn-danger btn-xs"
-                                (click)="item.remove()">
-                            <span class="glyphicon glyphicon-trash"></span> Remove
-                        </button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-
-               
-                <button type="submit" class="btn btn-secondary">Submit Button</button>
-                <button type="reset" class="btn btn-secondary">Reset Button</button>
-   <p>Form value: {{ userInfo.value | json }}</p>
+                <button class="btn rounded-btn" (click)="onSubmit(userInfo)" [disabled]="!userInfo.valid">Submit</button>
+                &nbsp;&nbsp;
+                <button class="btn rounded-btn" (click)="reset()">Reset</button>
+                <p>Form value: {{ userInfo.value | json }}</p>
             </form>
-
         </div>
-        
-  
-    
-</div>
+    </div>

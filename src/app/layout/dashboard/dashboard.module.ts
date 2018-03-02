@@ -4,6 +4,7 @@ import { NgbCarouselModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
+
 import {
     TimelineComponent,
     NotificationComponent,
@@ -29,7 +30,6 @@ import { FileSelectDirective, FileUploadModule } from "ng2-file-upload";
         TimelineComponent,
         NotificationComponent,
         ChatComponent
-     
     ]
 })
 export class DashboardModule {}

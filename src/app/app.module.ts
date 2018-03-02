@@ -10,12 +10,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+
 import { LoginModel } from "./login/login.model";
 import { LoginService } from "./http-service/login-service";
 import { HttpModule } from '@angular/http';
 import { LoginDataService } from "./login/logindataservice";
 import { AuthService } from "angular2-social-login/dist";
 import { MapsAPILoader } from "@agm/core";
+
+
+
+
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
     // for development
