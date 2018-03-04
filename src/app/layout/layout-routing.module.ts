@@ -12,6 +12,7 @@ const routes: Routes = [
             { path: 'mortagageSearch', loadChildren: './mortgage/mortgage.module#MortgageModule' },
             { path: 'mortgageeligibility', loadChildren: './mortgageeligibility/mortgageeligibility.module#MortgageEligibilityModule' },
              { path: 'mortgagequotation', loadChildren: './mortgagequotation/mortgagequotation.module#MortgageQuotationModule' },
+              { path: 'mortgageproperty', loadChildren: './mortgageproperty/mortgageproperty.module#MortgagePropertyModule' },
             { path: 'forms', loadChildren: './form/form.module#FormModule' },
             { path: 'bs-element', loadChildren: './bs-element/bs-element.module#BsElementModule' },
             { path: 'grid', loadChildren: './grid/grid.module#GridModule' },

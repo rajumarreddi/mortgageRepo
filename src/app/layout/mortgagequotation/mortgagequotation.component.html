@@ -6,9 +6,12 @@
     <div class="col-lg-6">
       <!--(ngSubmit)="onSubmit(mortgageQuotationModel)"-->
       <form [formGroup]="mortgageQuotationModel" novalidate>
+
+          
         <fieldset class="form-group">
           <label class="center-block">Type of Employment :  </label>
           <select class="form-control" formControlName="typeOfEmployment" (ngModelChange)="onTypeofEmpChange($event)">
+              <option label="Select One" value="Select One"></option>
         <option *ngFor="let typeofemp of typeofEmploymentArr" [ngValue]="typeofemp">{{typeofemp}}</option>
       </select>
         </fieldset>

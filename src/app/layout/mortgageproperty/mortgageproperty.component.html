@@ -1,0 +1,30 @@
+<div [@routerTransition]>
+  <p>
+    mortgageproperty works!
+  </p>
+  <div class="row">
+    <div class="col-lg-6">
+      <!--(ngSubmit)="onSubmit(mortgageQuotationModel)"-->
+      <form [formGroup]="mortgagePropertyModel" novalidate>
+        <fieldset class="form-group">
+          <label class="center-block">Purpose of Loan :  </label>
+          <select class="form-control" formControlName="purposeofloan">
+              <option label="Select One" value="Select One"></option>
+        <option *ngFor="let purpofloan of purposeofLoanArr" [ngValue]="purpofloan">{{purpofloan}}</option>
+      </select>
+        </fieldset>
+
+        <div *ngIf="propertyselected">
+        </div>
+      <P>Property by MLSID</P>
+        <div *ngIf="propertynotselected">
+          <p>property needs to search</p>
+        </div>
+        <button class="btn rounded-btn" (click)="onSubmitBack(mortgagePropertyModel)">Back</button>
+        <button class="btn rounded-btn" (click)="onSubmitNext(mortgagePropertyModel)">Next</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+

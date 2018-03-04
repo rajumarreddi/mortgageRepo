@@ -11,6 +11,7 @@ import { MortgageeligibilityComponent } from './mortgageeligibility/mortgageelig
 import { MortgagequotationComponent } from './mortgagequotation/mortgagequotation.component';
 import { MortgagedocumentsComponent } from './mortgagedocuments/mortgagedocuments.component';
 import { MortgagesubmissionComponent } from './mortgagesubmission/mortgagesubmission.component';
+import { MortgagepropertyComponent } from './mortgageproperty/mortgageproperty.component';
 
 @NgModule({
     imports: [
@@ -19,6 +20,6 @@ import { MortgagesubmissionComponent } from './mortgagesubmission/mortgagesubmis
         TranslateModule,
         NgbDropdownModule.forRoot()
     ],
-    declarations: [LayoutComponent, SidebarComponent, HeaderComponent,   MortgagedocumentsComponent, MortgagesubmissionComponent]
+    declarations: [LayoutComponent, SidebarComponent, HeaderComponent,    MortgagesubmissionComponent]
 })
 export class LayoutModule {}
