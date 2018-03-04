@@ -1,0 +1,115 @@
+<div [@routerTransition]>
+    <h2 class="text-muted">Personal <small>Details</small></h2>
+    <div class="row">
+        <div class="col-lg-6">
+            <!--(ngSubmit)="onSubmit(mortgageEligibiltyModel)"-->
+            <form [formGroup]="mortgageEligibiltyModel" novalidate >
+                <fieldset class="form-group">
+                    <label>Name <span style="color: red">*</span></label>
+                    <input id="name" class="form-control" formControlName="name" required >
+                    <div *ngIf="!mortgageEligibiltyModel.controls.name?.valid && (mortgageEligibiltyModel.controls.name?.dirty || mortgageEligibiltyModel.controls.name?.touched)">
+                        <div *ngIf="mortgageEligibiltyModel.controls['name'].hasError('required')" class="alert alert-danger">
+                            Please enter User Name
+                        </div>
+                        <!--<div *ngIf="mortgageEligibiltyModel.controls['name'].hasError('minlength')" class="alert alert-danger">
+                            Please enter atleast 8 chars
+                        </div>
+                        <div *ngIf="mortgageEligibiltyModel.controls['name'].hasError('maxlength')" class="alert alert-danger">
+                            Please enter maximum limit of 16 chars
+                        </div>
+                        <div *ngIf="mortgageEligibiltyModel.controls['name'].hasError('pattern')" class="alert alert-danger">
+                            Please enter Alphbets only
+                        </div>-->
+                    </div>
+                </fieldset>
+
+
+                 <fieldset class="form-group">
+                    <label>Gender</label>
+                    <label class="radio-inline">
+                        <input type="radio" formControlName="gender" id="optionsRadiosInline1" value="male" checked="">Male
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" formControlName="gender" id="optionsRadiosInline2" value="female">Female
+                    </label>
+                   
+                </fieldset>
+
+
+                 
+
+                <fieldset class="form-group">
+   
+   
+   <label>Date of Birth <span style="color: red">*</span></label>
+           
+        <input class="form-control" type="date" formControlName="dateofbirth" >
+    </fieldset> 
+
+                <fieldset class="form-group">
+                    <label>Phone <span style="color: red">*</span></label>
+                    <input class="form-control" formControlName="phone">
+                    <div *ngIf="!mortgageEligibiltyModel.controls.phone?.valid && (mortgageEligibiltyModel.controls.phone?.dirty || mortgageEligibiltyModel.controls.phone?.touched)">
+                        <div *ngIf="mortgageEligibiltyModel.controls['phone'].hasError('required')" class="alert alert-danger">
+                            Please enter Phone Number
+                        </div>
+                        <!--<div *ngIf="mortgageEligibiltyModel.controls['phone'].hasError('minlength')" class="alert alert-danger">
+                            Please enter atleast 12 chars
+                        </div>
+                        <div *ngIf="mortgageEligibiltyModel.controls['phone'].hasError('maxlength')" class="alert alert-danger">
+                            The maximum limit for userId is 14 chars
+                        </div>
+                        <div *ngIf="mortgageEligibiltyModel.controls['phone'].hasError('pattern')" class="alert alert-danger">
+                            Please enter Numerics with special characters "(" & ")"
+                        </div>-->
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label>Email <span style="color: red">*</span></label>
+                    <input class="form-control" formControlName="email">
+                    <div *ngIf="!mortgageEligibiltyModel.controls.salary?.valid && (mortgageEligibiltyModel.controls.salary?.dirty || mortgageEligibiltyModel.controls.salary?.touched)">
+                        <div *ngIf="mortgageEligibiltyModel.controls['salary'].hasError('required')" class="alert alert-danger">
+                            Please enter Salary
+                        </div>
+                        <!--<div *ngIf="mortgageEligibiltyModel.controls['salary'].hasError('minlength')" class="alert alert-danger">
+                            Please enter atleast 12 chars
+                        </div>
+                        <div *ngIf="mortgageEligibiltyModel.controls['salary'].hasError('maxlength')" class="alert alert-danger">
+                            The maximum limit for userId is 14 chars
+                        </div>
+                        <div *ngIf="mortgageEligibiltyModel.controls['salary'].hasError('pattern')" class="alert alert-danger">
+                            Please enter Numerics along with '$' symbol
+                        </div>-->
+                    </div>
+                </fieldset>
+
+              
+
+                <fieldset class="form-group">
+                    <label>Address <span style="color: red">*</span></label>
+                    <textarea class="form-control" rows="3" placeholder="Please Enter Address here.." formControlName="address" ></textarea>
+                     <div *ngIf="!mortgageEligibiltyModel.controls.address?.valid && (mortgageEligibiltyModel.controls.address?.dirty || mortgageEligibiltyModel.controls.address?.touched)">
+                        <div *ngIf="mortgageEligibiltyModel.controls['address'].hasError('required')" class="alert alert-danger">
+                            Please enter Address
+                        </div>
+                        <!--<div *ngIf="mortgageEligibiltyModel.controls['address'].hasError('minlength')" class="alert alert-danger">
+                            Please enter atleast 8 chars
+                        </div>
+                        <div *ngIf="mortgageEligibiltyModel.controls['address'].hasError('maxlength')" class="alert alert-danger">
+                            Please enter maximum limit of 16 chars
+                        </div>
+                        <div *ngIf="mortgageEligibiltyModel.controls['address'].hasError('pattern')" class="alert alert-danger">
+                            Please enter Alphbets only
+                        </div>-->
+                    </div>
+                </fieldset>
+               
+       <!--[disabled]="!mortgageEligibiltyModel.valid"-->
+              <button class="btn rounded-btn"  (click)="onSubmit(mortgageEligibiltyModel)">Next</button>
+                &nbsp;&nbsp;
+                <button class="btn rounded-btn" (click)="reset()">Reset</button>
+                <p>Form value: {{ mortgageEligibiltyModel.value | json }}</p>
+            </form>
+        </div>
+    </div>

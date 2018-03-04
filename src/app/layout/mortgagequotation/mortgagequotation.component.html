@@ -1,0 +1,85 @@
+<div [@routerTransition]>
+  <p>
+    mortgagequotation works!
+  </p>
+  <div class="row">
+    <div class="col-lg-6">
+      <!--(ngSubmit)="onSubmit(mortgageQuotationModel)"-->
+      <form [formGroup]="mortgageQuotationModel" novalidate>
+        <fieldset class="form-group">
+          <label class="center-block">Type of Employment :  </label>
+          <select class="form-control" formControlName="typeOfEmployment" (ngModelChange)="onTypeofEmpChange($event)">
+        <option *ngFor="let typeofemp of typeofEmploymentArr" [ngValue]="typeofemp">{{typeofemp}}</option>
+      </select>
+        </fieldset>
+        <div *ngIf="salariedEmp">
+       
+ <fieldset class="form-group">
+                    <label>Company <span style="color: red">*</span></label>
+                    <input class="form-control" formControlName="company">
+                    <div *ngIf="!mortgageQuotationModel.controls.salary?.valid && (mortgageQuotationModel.controls.salary?.dirty || mortgageQuotationModel.controls.salary?.touched)">
+                        <div *ngIf="mortgageQuotationModel.controls['salary'].hasError('required')" class="alert alert-danger">
+                            Please enter Salary
+                        </div>
+                     
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label>Gross Salary <span style="color: red">*</span></label>
+                    <input class="form-control" formControlName="grosssalary">
+                    <div *ngIf="!mortgageQuotationModel.controls.salary?.valid && (mortgageQuotationModel.controls.salary?.dirty || mortgageQuotationModel.controls.salary?.touched)">
+                        <div *ngIf="mortgageQuotationModel.controls['salary'].hasError('required')" class="alert alert-danger">
+                            Please enter Salary
+                        </div>
+                     
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label>EMI Amount <span style="color: red">*</span></label>
+                    <input class="form-control" formControlName="emiamount">
+                    <div *ngIf="!mortgageQuotationModel.controls.salary?.valid && (mortgageQuotationModel.controls.salary?.dirty || mortgageQuotationModel.controls.salary?.touched)">
+                        <div *ngIf="mortgageQuotationModel.controls['salary'].hasError('required')" class="alert alert-danger">
+                            Please enter Salary
+                        </div>
+                     
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label>Expences <span style="color: red">*</span></label>
+                    <input class="form-control" formControlName="expences">
+                    <div *ngIf="!mortgageQuotationModel.controls.salary?.valid && (mortgageQuotationModel.controls.salary?.dirty || mortgageQuotationModel.controls.salary?.touched)">
+                        <div *ngIf="mortgageQuotationModel.controls['salary'].hasError('required')" class="alert alert-danger">
+                            Please enter Salary
+                        </div>
+                     
+                    </div>
+                </fieldset>
+
+        </div>
+        <div *ngIf="businessEmp">
+          business grid
+    <fieldset class="form-group">
+      <label>Previous Year Profit <span style="color: red">*</span></label>
+      <input class="form-control" formControlName="previousyearprofit">
+      <div *ngIf="!mortgageQuotationModel.controls.previousyearprofit?.valid && (mortgageQuotationModel.controls.previousyearprofit?.dirty || mortgageQuotationModel.controls.previousyearprofit?.touched)">
+        <div *ngIf="mortgageQuotationModel.controls['previousyearprofit'].hasError('required')" class="alert alert-danger">
+          Please enter Previous year profit
+        </div>
+
+      </div>
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Start Date for Business <span style="color: red">*</span></label>
+      <input class="form-control" type="date" formControlName="businessstartdate">
+    </fieldset>
+        </div>
+        <button class="btn rounded-btn" (click)="onSubmitBack(mortgageQuotationModel)">Back</button>
+        <button class="btn rounded-btn" (click)="onSubmitNext(mortgageQuotationModel)">Next</button>
+      </form>
+    </div>
+  </div>
+</div>
+
