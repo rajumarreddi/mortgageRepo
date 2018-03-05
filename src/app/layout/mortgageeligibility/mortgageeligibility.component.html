@@ -84,15 +84,24 @@
                     </div>
                 </fieldset>
 
+                 <input placeholder="search for location" autocorrect="off" autocapitalize="off" 
+                    spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
+                    <br/>
+
+                    <fieldset class="form-group">
+                    <!--<label>Entered Address Details from Google Maps</label>-->
+                    <textarea class="form-control" rows="3" placeholder="Address" formControlName="address"
+                    [(ngModel)]='address'></textarea>
+                    </fieldset>
               
 
-                <fieldset class="form-group">
+                <!--<fieldset class="form-group">
                     <label>Address <span style="color: red">*</span></label>
                     <textarea class="form-control" rows="3" placeholder="Please Enter Address here.." formControlName="address" ></textarea>
                      <div *ngIf="!mortgageEligibiltyModel.controls.address?.valid && (mortgageEligibiltyModel.controls.address?.dirty || mortgageEligibiltyModel.controls.address?.touched)">
                         <div *ngIf="mortgageEligibiltyModel.controls['address'].hasError('required')" class="alert alert-danger">
                             Please enter Address
-                        </div>
+                        </div>-->
                         <!--<div *ngIf="mortgageEligibiltyModel.controls['address'].hasError('minlength')" class="alert alert-danger">
                             Please enter atleast 8 chars
                         </div>
@@ -102,14 +111,14 @@
                         <div *ngIf="mortgageEligibiltyModel.controls['address'].hasError('pattern')" class="alert alert-danger">
                             Please enter Alphbets only
                         </div>-->
-                    </div>
-                </fieldset>
+                    <!--</div>
+                </fieldset>-->
                
        <!--[disabled]="!mortgageEligibiltyModel.valid"-->
               <button class="btn rounded-btn"  (click)="onSubmit(mortgageEligibiltyModel)">Next</button>
                 &nbsp;&nbsp;
                 <button class="btn rounded-btn" (click)="reset()">Reset</button>
-                <p>Form value: {{ mortgageEligibiltyModel.value | json }}</p>
+                <!--<p>Form value: {{ mortgageEligibiltyModel.value | json }}</p>-->
             </form>
         </div>
     </div>

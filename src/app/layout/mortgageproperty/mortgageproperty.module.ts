@@ -10,6 +10,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MortgagepropertyComponent } from "./mortgageproperty.component";
 import { MortgagePropertyRoutingModule } from "./mortgageproperty-routing.module";
 import { MortgagePropertyModel } from "./mortgageproperty.model";
+import { MortgageService } from "../../http-service/mortgage-service";
+import { NgxPaginationModule } from "ngx-pagination/dist/ngx-pagination";
 
 @NgModule({
     imports: [
@@ -21,12 +23,13 @@ import { MortgagePropertyModel } from "./mortgageproperty.model";
         FormsModule,
         ReactiveFormsModule,
        FileUploadModule,
+    NgxPaginationModule
 
     ],
     declarations: [
         MortgagepropertyComponent,
         
     ],
-        providers: [MortgagePropertyModel, MortgageEligibilityService]
+        providers: [MortgagePropertyModel, MortgageEligibilityService, MortgageService]
 })
 export class MortgagePropertyModule {}

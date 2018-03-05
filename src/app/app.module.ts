@@ -32,9 +32,9 @@ export function createTranslateLoader(http: HttpClient) {
 
 @NgModule({
     imports: [
-        AgmCoreModule.forRoot({
-        libraries: ["places"]
-         }),
+        // AgmCoreModule.forRoot({
+        // libraries: ["places"]
+        //  }),
         CommonModule,
         BrowserModule,
         BrowserAnimationsModule,

@@ -6,9 +6,10 @@ import { StatModule } from '../../shared';
 import { FileSelectDirective, FileUploadModule } from "ng2-file-upload";
 import { MortgageEligibilityService } from "../../http-service/mortgageeligibility-service";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MortgageSubmissionModel } from "./mortgagesubmission.model";
+
 import { MortgagesubmissionComponent } from "./mortgagesubmission.component";
 import { MortgageSubmissionRoutingModule } from "./mortgagesubmission-routing.module";
+import { MortgageSubmissionModel } from "./mortgagesubmission.model";
 
 @NgModule({
     imports: [

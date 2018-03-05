@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 
-import { Http, Response, Headers, BaseRequestOptions, RequestOptions } from '@angular/http';
+import { Http, Response, Headers, BaseRequestOptions, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Rx';
 import { LoginModel } from "../login/login.model";
@@ -12,8 +12,10 @@ import { UserInfo } from "../layout/dashboard/userinfo";
 @Injectable()
 export class LoginService {
    private headers = new Headers({ 'Content-Type': 'application/json' });
-   
-   
+
+  private uploadHeader = new Headers({  'Accept': 'application/json' });
+  options:RequestOptions = new RequestOptions({ headers: this.uploadHeader });
+  
    selectedUser: LoginModel;
    loginObj:LoginModel=null;
    signupModelObj:SignupModel=null;
@@ -98,14 +100,14 @@ saveRegistrationDetails(signupModel: SignupModel): Observable<SignupModel> {
 
   uploadFileToDropBox(formData:FormData): Observable<boolean> {
    
-        let uploadHeader = new Headers();//;content-type=multipart
-        uploadHeader.append('Accept', 'application/json');
+       // let uploadHeader = new Headers();//;content-type=multipart
+      //  uploadHeader.append('Accept', 'application/json');
         
         //'http://localhost:8080/dorpBoxFileUpload'
         //https://DocuSignExample.cfapps.io
         console.log("Service uploadfiletodropbox");
         console.log("formData is >>>>>>>>>>>"+formData.has("file"));
-       return this.http.post('https://DocuSignExample.cfapps.io/dorpBoxFileUpload', formData,uploadHeader)
+       return this.http.post('https://DocuSignExample.cfapps.io/dorpBoxFileUpload', formData,this.options)
             .map(res => res.json())
             .catch((error: any) => Observable.throw(error.json().error || false));
             

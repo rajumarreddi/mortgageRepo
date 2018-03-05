@@ -12,6 +12,7 @@ import { MortgageeligibilityComponent } from "./mortgageeligibility.component";
 import { MortgageEligibilityService } from "../../http-service/mortgageeligibility-service";
 import { MortgageEligibiltyModel } from "./mortgageeligibilty.model";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { AgmCoreModule } from "@agm/core";
 
 @NgModule({
     imports: [
@@ -23,6 +24,9 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
         FormsModule,
         ReactiveFormsModule,
        FileUploadModule,
+       AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyA8PKTAnHwjDREcwGSqlqJTDxirZfn7zhQ',
+      libraries: ["places"]}),
 
     ],
     declarations: [
