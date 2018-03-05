@@ -6,13 +6,19 @@ import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Rx';
 import { LoginModel } from "../login/login.model";
 import { SignupModel } from "../signup/signup.model";
+import { UserInfo } from "../layout/dashboard/userinfo";
+
 
 @Injectable()
 export class LoginService {
    private headers = new Headers({ 'Content-Type': 'application/json' });
+   
+   
    selectedUser: LoginModel;
    loginObj:LoginModel=null;
    signupModelObj:SignupModel=null;
+   userInfo:UserInfo=null
+   fileSaved:boolean=false;
   public userLoggedIn:boolean=false;
   constructor(private http: Http) {
   }
@@ -68,5 +74,47 @@ saveRegistrationDetails(signupModel: SignupModel): Observable<SignupModel> {
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
     return Observable.throw(errMsg);
   }
+
+
+  savePersonalDetails(userInfo: UserInfo): Observable<UserInfo> {
+    console.log("signupmodel values are"+userInfo);
+    console.log("full Name >>>>>>>>>"+userInfo.name);
+    let registrationURL = `https://mortgage-app.cfapps.io/savePersonalDetails`;
+    
+      return this.http
+      .post(registrationURL, userInfo, { headers: this.headers })
+     .map(this.extractPersonalData)
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+
+   private extractPersonalData(response:Response) {
+        this.userInfo = response.json();
+        console.log("After userinfo hitting the service ---> "+this.userInfo.dataSaved);
+              return this.signupModelObj || { };
+    }
+
+
+
+  uploadFileToDropBox(formData:FormData): Observable<boolean> {
+    //  let headers = new Headers();//;content-type=multipart
+    //     headers.append('Accept', 'application/json');
+        //headers.append('Content-Type', 'multipart/form-data');
+        //'http://localhost:8080/dorpBoxFileUpload'
+        //https://DocuSignExample.cfapps.io
+        console.log("Service uploadfiletodropbox");
+        console.log("formData is >>>>>>>>>>>"+formData);
+       return this.http.post('https://DocuSignExample.cfapps.io/dorpBoxFileUpload', formData,{ headers: this.headers })
+            .map(this.extracDropBoxInfo)
+            .catch((error: any) => Observable.throw(error.json().error || false));
+            
+
+    }
+
+     private extracDropBoxInfo(response:Response) {
+        this.fileSaved = response.json();
+        console.log("After userinfo hitting the service ---> "+this.userInfo.dataSaved);
+              return this.fileSaved || { };
+    }
 
 }
