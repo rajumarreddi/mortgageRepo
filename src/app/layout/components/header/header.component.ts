@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { LoginService } from "../../../http-service/login-service";
 import { LoginModel } from "../../../login/login.model";
 import { LoginDataService } from "../../../login/logindataservice";
+import { AuthService } from "angular2-social-login/dist";
 
 @Component({
     selector: 'app-header',
@@ -16,7 +17,10 @@ loginModel:LoginModel=new LoginModel();
 name:String;
 image:String;
 findimage:boolean;
-    constructor(private translate: TranslateService, public router: Router,private loginService:LoginService,private logindataService:LoginDataService) {
+
+
+    constructor(private translate: TranslateService, public router: Router,private loginService:LoginService,private logindataService:LoginDataService,
+    public _auth : AuthService) {
 
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de', 'zh-CHS']);
         this.translate.setDefaultLang('en');
@@ -67,6 +71,10 @@ findimage:boolean;
 
     onLoggedout() {
         localStorage.removeItem('isLoggedin');
+        localStorage.setItem('userData', '');
+        localStorage.clear();
+        this.loginService.loginObj.validUser=false;
+        this.logindataService.userLoggedIn=false;
     }
 
     changeLang(language: string) {

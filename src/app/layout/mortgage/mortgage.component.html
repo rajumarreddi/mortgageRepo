@@ -1,15 +1,133 @@
 <div [@routerTransition]>
-    <h2 class="text-muted"><small>Property Info</small></h2>  
+    <h2 class="text-muted"><small>Property Info</small></h2>
     <div class="row">
         <div class="col-lg-6">
-            
-         <form  [formGroup] = "mortagageModel" novalidate>
-            <fieldset class="form-group">
-                <input type="text" class="form-control" formControlName="mlsId" placeholder="Please enter MLS ID here..">                   
-            </fieldset>     
-             <button type="submit" class="btn btn-secondary" (click)="onSubmit(mortagageModel)">Search</button>
-            <button type="reset" class="btn btn-secondary">Reset</button>
-             <p>{{ mortagageModel.value | json }}</p>
-         </form>
-        </div>  
-</div>
+
+            <form [formGroup]="mortgageModel" novalidate>
+                <fieldset class="form-group">
+                    <input type="text" class="form-control" formControlName="mlsId" placeholder="Please enter MLS ID here..">
+                </fieldset>
+                <button type="submit" class="btn btn-secondary" (click)="onSubmit(mortgageModel)">Search</button>
+                <button type="reset" class="btn btn-secondary" (click)="showProperties()">Show Properties</button>
+                <button type="submit" class="btn btn-secondary" (click)="reset()">Reset</button>
+                <!--<p>{{ mortgageModel.value | json }}</p>-->
+
+
+                <!--Table with image start-->
+                <div class="container" *ngIf="false">
+                    <!-- [hidden]={{hideElement}}-->
+
+                    <h1 class="text-center">Property Details</h1>
+                    <!--raju-->
+                    <div id="header" style="height:15%;width:100%;">
+                        <div style='float:left'>
+                            <img src={{returnData.photo1}} style="margin-left:5%;margin-top:5%" /><br/>
+                        </div>
+                        <div style='float:leftt'>
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>MLS Id:</th>
+                                    <td>{{returnData.mlsId}}</td>
+                                </tr>
+                                <!--<tr>
+                    <th>photo1:</th>
+                    <td>Bill Gates</td>
+                </tr>
+                <tr>
+                    <th>photo2:</th>
+                    <td>Bill Gates</td>
+                </tr>-->
+                                <tr>
+                                    <th>List Price:</th>
+                                    <td>{{returnData.listPrice}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Area:</th>
+                                    <td>{{returnData.area}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Amenities:</th>
+                                    <td>{{returnData.amenities}}</td>
+                                </tr>
+                                <tr>
+                                    <th>State:</th>
+                                    <td>{{returnData.state}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Country:</th>
+                                    <td>{{returnData.country}}</td>
+                                </tr>
+                                <tr>
+                                    <th>PostalCode:</th>
+                                    <td>{{returnData.postalCode}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Stree tName:</th>
+                                    <td>{{returnData.streetName}}</td>
+                                </tr>
+                                <tr>
+                                    <th>City:</th>
+                                    <td>{{returnData.city}}</td>
+                                </tr>
+
+                                <!--<tr>
+                    <th>Image:</th>
+                   <td><img [src]={{hideElement}}></td>
+                </tr>-->
+
+                            </table>
+                        </div>
+                    </div>
+
+                    <!--raju-->
+
+                </div>
+                <!--Table with image End-->
+
+
+
+
+
+
+
+
+               <!--Data Table start-->
+     <div class="container">
+    <table class="table table-fixed" border="1">
+  <thead>
+    <tr>
+      <th>MLS Id</th>
+      <th>List Price</th>
+      <th>Area</th>
+      <th>Amenities</th>
+	  <th>State</th>
+	  <th>Country</th>
+	  <th>PostalCode</th>
+	  <th>Stree tName</th>
+      <th>city</th>
+	  <th>Image</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let rec of this.propertyData">
+      <td>{{rec.mlsId}}</td>
+      <td>{{rec.listPrice}}</td>
+      <td>{{rec.area}}</td>
+      <td>{{rec.amenities}}</td>
+	  <td>{{rec.state}}</td>
+	  <td>{{rec.country}}</td>
+	  <td>{{rec.postalCode}}</td>
+	  <td>{{rec.streetName}}</td>
+	  <td>{{rec.city}}</td>
+      <td border=3><img src={{rec.photo1}} height="200px" width="300px"/></td>
+      
+    </tr>
+   </tbody>
+</table>
+     </div>
+                <!--Data Table End-->
+
+            </form>
+        </div>
+    </div>

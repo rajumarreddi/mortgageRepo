@@ -7,7 +7,6 @@ import { Observable } from 'rxjs/Rx';
 import { LoginModel } from "../login/login.model";
 import { SignupModel } from "../signup/signup.model";
 
-
 @Injectable()
 export class LoginService {
    private headers = new Headers({ 'Content-Type': 'application/json' });

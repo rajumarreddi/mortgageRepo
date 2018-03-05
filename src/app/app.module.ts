@@ -12,13 +12,13 @@ import { AuthGuard } from './shared';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 //import { MapsAPILoader } from "@agm/core";
 // import {MapsAPILoader} from "@angular2-google-maps/core";
-
+import { MortgageModel } from "./layout/mortgage/mortgage.model";
 import { LoginModel } from "./login/login.model";
 import { LoginService } from "./http-service/login-service";
 import { HttpModule } from '@angular/http';
 import { LoginDataService } from "./login/logindataservice";
 import { AuthService } from "angular2-social-login/dist";
-import { MapsAPILoader } from "@agm/core";
+import { MapsAPILoader, AgmCoreModule } from "@agm/core";
 
 
 
@@ -32,6 +32,9 @@ export function createTranslateLoader(http: HttpClient) {
 
 @NgModule({
     imports: [
+        AgmCoreModule.forRoot({
+        libraries: ["places"]
+         }),
         CommonModule,
         BrowserModule,
         BrowserAnimationsModule,
@@ -49,7 +52,7 @@ export function createTranslateLoader(http: HttpClient) {
         AppRoutingModule
     ],
     declarations: [AppComponent],
-    providers: [AuthGuard,LoginService,LoginModel,LoginDataService,AuthService],
+    providers: [AuthGuard,LoginService,LoginModel,LoginDataService,AuthService, MortgageModel],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
