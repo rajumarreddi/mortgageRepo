@@ -19,9 +19,11 @@ export class DashboardComponent implements OnInit {
     public sliders: Array<any> = [];
     userInfo:FormGroup;
     public uploader:FileUploader = new FileUploader({url: URL});
-returnData : UserInfo =  new UserInfo();
-  fileSaved :boolean=false;
-  fileSavedMessage:string=null;
+    returnData : UserInfo =  new UserInfo();
+    fileSaved :boolean=false;
+    fileSavedMessage:string=null;
+
+    formData : FormData ;
    
     //namePattern = "^[a-zA-Z\s]+$";
     //phonePattern = "^[+]?[0-9]{0,1}[-. ]?\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$";
@@ -38,6 +40,7 @@ returnData : UserInfo =  new UserInfo();
     ngOnInit() {
         
         this.createForm();
+        this.formData = new FormData();
     }
 
     onSubmit({ value, valid }: { value: UserInfo, valid: boolean }) {
@@ -80,14 +83,14 @@ returnData : UserInfo =  new UserInfo();
        // dropDetail.accessToken = "aaaa";
         //JSON.stringify(json)
         //dropDetail.inputFile.append('file', file, file.name);
-        let formData:FormData = new FormData();
-        formData.append('file', file, file.name);
+        //let formData:FormData = new FormData();
+        this.formData.append('file', file, file.name);
        console.log("file. name is>>>>"+file.name);
        // console.log("FFFFFFFFFFFFFFF"+ formData)
         // dropDetail.inputFile=formData;
         // console.log("IIIIIIIIIIIIIIII"+ dropDetail.inputFile);
-        let headers = new Headers();//;content-type=multipart
-        headers.append('Accept', 'application/json');
+        // let headers = new Headers();//;content-type=multipart
+        // headers.append('Accept', 'application/json');
         //headers.append('Content-Type', 'multipart/form-data');
         //'http://localhost:8080/dorpBoxFileUpload'
         //https://DocuSignExample.cfapps.io
@@ -101,7 +104,7 @@ returnData : UserInfo =  new UserInfo();
         //         error => console.log(error)
         //     )
 
-        this.loginService.uploadFileToDropBox(formData).subscribe(fileSaved => this.fileSaved = fileSaved);
+        this.loginService.uploadFileToDropBox(this.formData).subscribe(fileSaved => this.fileSaved = fileSaved);
          console.log("saved file"+this.fileSaved);
     }
 }

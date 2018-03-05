@@ -14,6 +14,7 @@ import { MortgagesubmissionComponent } from './mortgagesubmission/mortgagesubmis
 import { MortgagepropertyComponent } from './mortgageproperty/mortgageproperty.component';
 import { PropertieslistComponent } from './propertieslist/propertieslist.component';
 
+
 @NgModule({
     imports: [
         CommonModule,
@@ -21,6 +22,6 @@ import { PropertieslistComponent } from './propertieslist/propertieslist.compone
         TranslateModule,
         NgbDropdownModule.forRoot()
     ],
-    declarations: [LayoutComponent, SidebarComponent, HeaderComponent,    MortgagesubmissionComponent]
+    declarations: [LayoutComponent, SidebarComponent, HeaderComponent]
 })
 export class LayoutModule {}
