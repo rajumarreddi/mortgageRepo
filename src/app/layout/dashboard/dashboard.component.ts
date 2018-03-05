@@ -7,6 +7,9 @@ import { LoginService } from "../../http-service/login-service";
 const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 import { Http, Response, Headers, BaseRequestOptions, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
+
+import 'rxjs/add/operator/map';
+
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
@@ -23,7 +26,8 @@ export class DashboardComponent implements OnInit {
     fileSaved :boolean=false;
     fileSavedMessage:string=null;
 
-    formData : FormData ;
+    allFiles: Array<any> []=[];
+   // formData : FormData ;
    
     //namePattern = "^[a-zA-Z\s]+$";
     //phonePattern = "^[+]?[0-9]{0,1}[-. ]?\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$";
@@ -33,14 +37,14 @@ export class DashboardComponent implements OnInit {
     //addressPattern = "\d{1,5}\s\w.\s(\b\w*\b\s){1,2}\w*\.";
     
 
-    constructor(private fb:FormBuilder,private loginService:LoginService) {
+    constructor(private fb:FormBuilder,private loginService:LoginService,private http: Http) {
       
     }
 
     ngOnInit() {
         
         this.createForm();
-        this.formData = new FormData();
+        //this.formData = new FormData();
     }
 
     onSubmit({ value, valid }: { value: UserInfo, valid: boolean }) {
@@ -73,40 +77,42 @@ export class DashboardComponent implements OnInit {
         this.userInfo.reset();
     }
 
+    onChange1(event: any) {
+        this.allFiles.push(event.target.files)
+        console.log("Files added" +event.target.files );
+    }
 
-    onChange(event: any) {
-    let fileList: FileList = event.target.files;
-    if(fileList.length > 0) {
-        let file: File = fileList[0];
-        
-        //let dropDetail :  DropDetail = new DropDetail();
-       // dropDetail.accessToken = "aaaa";
-        //JSON.stringify(json)
-        //dropDetail.inputFile.append('file', file, file.name);
-        //let formData:FormData = new FormData();
-        this.formData.append('file', file, file.name);
-       console.log("file. name is>>>>"+file.name);
-       // console.log("FFFFFFFFFFFFFFF"+ formData)
-        // dropDetail.inputFile=formData;
-        // console.log("IIIIIIIIIIIIIIII"+ dropDetail.inputFile);
-        // let headers = new Headers();//;content-type=multipart
-        // headers.append('Accept', 'application/json');
-        //headers.append('Content-Type', 'multipart/form-data');
-        //'http://localhost:8080/dorpBoxFileUpload'
-        //https://DocuSignExample.cfapps.io
-
-
-        // this.http.post('https://DocuSignExample.cfapps.io/dorpBoxFileUpload', formData,headers)
-        //     .map(res => res.json())
-        //     .catch(error => Observable.throw(error))
-        //     .subscribe(
-        //         data => console.log('success'),
-        //         error => console.log(error)
-        //     )
-
-        this.loginService.uploadFileToDropBox(this.formData).subscribe(fileSaved => this.fileSaved = fileSaved);
+    onChange() {
+        let formData = new FormData();
+        console.log("all file array data "+ this.allFiles.length);
+        if(this.allFiles.length > 0) {
+            
+            for (let entry of this.allFiles) {
+                console.log(entry);
+                for(let data of  entry){
+                    let file: File = data;
+                    formData.append('file', file, file.name);
+                    console.log("file. name is>>>>"+file.name);
+                }
+                
+            }
+       
+        console.log("all form data ::::::::::"  + formData);
+        this.loginService.uploadFileToDropBox(formData).subscribe(fileSaved => this.fileSaved = fileSaved);
          console.log("saved file"+this.fileSaved);
     }
+    // onChange(event: any) {
+    // let fileList: FileList = event.target.files;
+    // if(fileList.length > 0) {
+    //     let file: File = fileList[0];
+    //     let formData = new FormData();
+      
+    //     formData.append('file', file, file.name);
+    //    console.log("file. name is>>>>"+file.name);
+      
+    //     this.loginService.uploadFileToDropBox(formData).subscribe(fileSaved => this.fileSaved = fileSaved);
+    //    //  console.log("saved file"+this.fileSaved);
+    // }
 }
   
 }

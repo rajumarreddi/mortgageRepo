@@ -16,6 +16,10 @@ export class LoginService {
   private uploadHeader = new Headers({  'Accept': 'application/json' });
   options:RequestOptions = new RequestOptions({ headers: this.uploadHeader });
   
+ 
+  
+
+   
    selectedUser: LoginModel;
    loginObj:LoginModel=null;
    signupModelObj:SignupModel=null;
@@ -108,10 +112,8 @@ saveRegistrationDetails(signupModel: SignupModel): Observable<SignupModel> {
         console.log("Service uploadfiletodropbox");
         console.log("formData is >>>>>>>>>>>"+formData.has("file"));
        return this.http.post('https://DocuSignExample.cfapps.io/dorpBoxFileUpload', formData,this.options)
-            .map(res => res.json())
-            .catch((error: any) => Observable.throw(error.json().error || false));
-            
-
+            .map(response => response.json())
+            .catch(error => Observable.throw(error));
     }
 
      private extracDropBoxInfo(response:Response) {
@@ -120,5 +122,6 @@ saveRegistrationDetails(signupModel: SignupModel): Observable<SignupModel> {
         
         return this.fileSaved || { };
     }
+   
 
 }
