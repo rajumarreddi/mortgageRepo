@@ -97,15 +97,16 @@ saveRegistrationDetails(signupModel: SignupModel): Observable<SignupModel> {
 
 
   uploadFileToDropBox(formData:FormData): Observable<boolean> {
-    //  let headers = new Headers();//;content-type=multipart
-    //     headers.append('Accept', 'application/json');
-        //headers.append('Content-Type', 'multipart/form-data');
+   
+        let uploadHeader = new Headers();//;content-type=multipart
+        uploadHeader.append('Accept', 'application/json');
+        
         //'http://localhost:8080/dorpBoxFileUpload'
         //https://DocuSignExample.cfapps.io
         console.log("Service uploadfiletodropbox");
-        console.log("formData is >>>>>>>>>>>"+formData);
-       return this.http.post('https://DocuSignExample.cfapps.io/dorpBoxFileUpload', formData,{ headers: this.headers })
-            .map(this.extracDropBoxInfo)
+        console.log("formData is >>>>>>>>>>>"+formData.has("file"));
+       return this.http.post('https://DocuSignExample.cfapps.io/dorpBoxFileUpload', formData,uploadHeader)
+            .map(res => res.json())
             .catch((error: any) => Observable.throw(error.json().error || false));
             
 
@@ -113,8 +114,9 @@ saveRegistrationDetails(signupModel: SignupModel): Observable<SignupModel> {
 
      private extracDropBoxInfo(response:Response) {
         this.fileSaved = response.json();
-        console.log("After userinfo hitting the service ---> "+this.userInfo.dataSaved);
-              return this.fileSaved || { };
+        console.log(response.json());
+        
+        return this.fileSaved || { };
     }
 
 }

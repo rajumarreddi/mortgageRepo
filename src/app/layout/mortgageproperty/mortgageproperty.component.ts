@@ -47,7 +47,7 @@ purposeofLoanArr:string[];
         console.log(">>>>>>>>>>>full name in ocmoponent" + value.typeOfProperty);
         this.mortgageEligibilityService.mortgagePropertyModel=value;
 
-      //this.router.navigate(["/mortgageeligibility"]);
+      this.router.navigate(["/mortgagedocuments"]);
         
        
        
