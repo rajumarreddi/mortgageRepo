@@ -12,7 +12,10 @@ import { UserInfo } from "../layout/dashboard/userinfo";
 @Injectable()
 export class LoginService {
    private headers = new Headers({ 'Content-Type': 'application/json' });
-   
+ 
+   private uploadHeader = new Headers({  'Accept': 'application/json' });
+  options:RequestOptions = new RequestOptions({ headers: this.uploadHeader });
+
    
    selectedUser: LoginModel;
    loginObj:LoginModel=null;
@@ -98,18 +101,16 @@ saveRegistrationDetails(signupModel: SignupModel): Observable<SignupModel> {
 
   uploadFileToDropBox(formData:FormData): Observable<boolean> {
    
-        let uploadHeader = new Headers();//;content-type=multipart
-        uploadHeader.append('Accept', 'application/json');
+       // let uploadHeader = new Headers();//;content-type=multipart
+      //  uploadHeader.append('Accept', 'application/json');
         
         //'http://localhost:8080/dorpBoxFileUpload'
         //https://DocuSignExample.cfapps.io
         console.log("Service uploadfiletodropbox");
         console.log("formData is >>>>>>>>>>>"+formData.has("file"));
-       return this.http.post('https://DocuSignExample.cfapps.io/dorpBoxFileUpload', formData,uploadHeader)
-            .map(res => res.json())
-            .catch((error: any) => Observable.throw(error.json().error || false));
-            
-
+       return this.http.post('https://DocuSignExample.cfapps.io/dorpBoxFileUpload', formData,this.options)
+            .map(response => response.json())
+            .catch(error => Observable.throw(error));
     }
 
      private extracDropBoxInfo(response:Response) {
@@ -118,5 +119,6 @@ saveRegistrationDetails(signupModel: SignupModel): Observable<SignupModel> {
         
         return this.fileSaved || { };
     }
+   
 
 }

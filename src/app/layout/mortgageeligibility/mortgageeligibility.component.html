@@ -25,9 +25,9 @@
 
 
                  <fieldset class="form-group">
-                    <label>Gender</label>
+                    <label>Gender<span style="color: red">*</span></label>
                     <label class="radio-inline">
-                        <input type="radio" formControlName="gender" id="optionsRadiosInline1" value="male" checked="">Male
+                        <input type="radio" formControlName="gender" id="optionsRadiosInline1" value="male" checked="" >Male
                     </label>
                     <label class="radio-inline">
                         <input type="radio" formControlName="gender" id="optionsRadiosInline2" value="female">Female
@@ -106,10 +106,11 @@
                 </fieldset>
                
        <!--[disabled]="!mortgageEligibiltyModel.valid"-->
+         <button class="btn rounded-btn" (click)="reset()">Reset</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <button class="btn rounded-btn"  (click)="onSubmit(mortgageEligibiltyModel)">Next</button>
-                &nbsp;&nbsp;
-                <button class="btn rounded-btn" (click)="reset()">Reset</button>
-                <p>Form value: {{ mortgageEligibiltyModel.value | json }}</p>
+               
+              
+            
             </form>
         </div>
     </div>

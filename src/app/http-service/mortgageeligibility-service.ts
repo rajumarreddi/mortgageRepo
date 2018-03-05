@@ -10,7 +10,7 @@ import { UserInfo } from "../layout/dashboard/userinfo";
 import { MortgageEligibiltyModel } from "../layout/mortgageeligibility/mortgageeligibilty.model";
 import { MortgagePropertyModel } from "../layout/mortgageproperty/mortgageproperty.model";
 import { MortgageQuotationModel } from "../layout/mortgagequotation/mortgagequotation.model";
-
+import { DcoSignStatus } from "./../layout/mortgagedocuments/DocuSignStatus";
 
 
 @Injectable()
@@ -31,6 +31,9 @@ export class MortgageEligibilityService{
      userInfo:UserInfo=null;
       fileSaved:boolean=false;
      private headers = new Headers({ 'Content-Type': 'application/json' });
+    private uploadHeader = new Headers({  'Accept': 'application/json' });
+     options:RequestOptions = new RequestOptions({ headers: this.uploadHeader });
+
 constructor(private http: Http) {
   }
 
@@ -43,7 +46,7 @@ constructor(private http: Http) {
         //https://DocuSignExample.cfapps.io
         console.log("Service uploadfiletodropbox");
         console.log("formData is >>>>>>>>>>>"+formData);
-       return this.http.post('https://DocuSignExample.cfapps.io/dorpBoxFileUpload', formData,{ headers: this.headers })
+       return this.http.post('https://DocuSignExample.cfapps.io/dorpBoxFileUpload', formData,this.options)
             .map(this.extracDropBoxInfo)
             .catch((error: any) => Observable.throw(error.json().error || false));
             
@@ -57,7 +60,26 @@ constructor(private http: Http) {
     }
 
 
-
-
+ onDocuSignServiceCall(event: any) : Observable<DcoSignStatus>{
+ 
+    console.log("onChange =======");
+    let fileList: FileList = event.target.files;
+    if(fileList.length > 0) {
+        let file: File = fileList[0];
+               
+        let formData:FormData = new FormData();
+        formData.append('file', file, file.name);
+       
+         // console.log("IIIIIIIIIIIIIIII"+ dropDetail.inputFile);
+        // let headers = new Headers();
+        // headers.append('Accept', 'application/json');
+        //headers.append('Content-Type', 'multipart/form-data');
+        //'http://localhost:8080/dorpBoxFileUpload'
+        //https://DocuSignExample.cfapps.io/docSignFileUpload
+       return this.http.post('https://DocuSignExample.cfapps.io/docSignFileUpload', formData, this.options)
+        .map(res => res.json())
+        .catch(error => Observable.throw(error))
+        }
+    }
 
 }

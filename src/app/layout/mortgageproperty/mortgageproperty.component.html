@@ -9,7 +9,7 @@
         <fieldset class="form-group">
           <label class="center-block">Purpose of Loan :  </label>
           <select class="form-control" formControlName="purposeofloan">
-              <option label="Select One" value="Select One"></option>
+              <option label="Select One" selected></option>
         <option *ngFor="let purpofloan of purposeofLoanArr" [ngValue]="purpofloan">{{purpofloan}}</option>
       </select>
         </fieldset>
@@ -21,6 +21,7 @@
           <p>property needs to search</p>
         </div>
         <button class="btn rounded-btn" (click)="onSubmitBack(mortgagePropertyModel)">Back</button>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button class="btn rounded-btn" (click)="onSubmitNext(mortgagePropertyModel)">Next</button>
       </form>
     </div>
