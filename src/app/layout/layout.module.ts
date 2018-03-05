@@ -12,6 +12,7 @@ import { MortgagequotationComponent } from './mortgagequotation/mortgagequotatio
 import { MortgagedocumentsComponent } from './mortgagedocuments/mortgagedocuments.component';
 import { MortgagesubmissionComponent } from './mortgagesubmission/mortgagesubmission.component';
 import { MortgagepropertyComponent } from './mortgageproperty/mortgageproperty.component';
+import { PropertieslistComponent } from './propertieslist/propertieslist.component';
 
 @NgModule({
     imports: [
