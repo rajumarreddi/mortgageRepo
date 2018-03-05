@@ -30,8 +30,7 @@ export class MortgageeligibilityComponent implements OnInit {
         address: this.mortgageEligibilityService.mortgageEligibilityModel.address
       });
     }
-  }
-
+  }  
     onSubmit({ value, valid }: { value: MortgageEligibiltyModel, valid: boolean }) {
 
         console.log(">>>>>>>>>>>full name in ocmoponent" + value.name);
