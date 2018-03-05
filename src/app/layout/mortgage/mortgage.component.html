@@ -8,10 +8,9 @@
                     <input type="text" class="form-control" formControlName="mlsId" placeholder="Please enter MLS ID here..">
                 </fieldset>
                 <button type="submit" class="btn btn-secondary" (click)="onSubmit(mortgageModel)">Search</button>
-                <button type="reset" class="btn btn-secondary" (click)="showProperties()">Show Properties</button>
                 <button type="submit" class="btn btn-secondary" (click)="reset()">Reset</button>
                 <!--<p>{{ mortgageModel.value | json }}</p>-->
-
+<!--<button (click)="download()">download </button>-->
 
                 <!--Table with image start-->
                 <div class="container">
@@ -82,51 +81,7 @@
                     <!--raju-->
 
                 </div>
-                <!--Table with image End-->
-
-
-
-
-
-
-
-
-               <!--Data Table start-->
-     <div class="container" *ngIf="false">
-    <table class="table table-fixed" border="1">
-  <thead>
-    <tr>
-      <th>MLS Id</th>
-      <th>List Price</th>
-      <th>Area</th>
-      <th>Amenities</th>
-	  <th>State</th>
-	  <th>Country</th>
-	  <th>PostalCode</th>
-	  <th>Stree tName</th>
-      <th>city</th>
-	  <th>Image</th>
-
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let rec of this.propertyData">
-      <td>{{rec.mlsId}}</td>
-      <td>{{rec.listPrice}}</td>
-      <td>{{rec.area}}</td>
-      <td>{{rec.amenities}}</td>
-	  <td>{{rec.state}}</td>
-	  <td>{{rec.country}}</td>
-	  <td>{{rec.postalCode}}</td>
-	  <td>{{rec.streetName}}</td>
-	  <td>{{rec.city}}</td>
-      <td border=3><img src={{rec.photo1}} height="200px" width="300px"/></td>
-      
-    </tr>
-   </tbody>
-</table>
-     </div>
-                <!--Data Table End-->
+                <!--Table with image End-->           
 
             </form>
         </div>

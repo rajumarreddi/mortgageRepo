@@ -5,7 +5,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms"
 import { MortgageModule } from "./mortgage.module";
 import { MortgageModel } from "./mortgage.model";
 import { MortgageService } from "../../http-service/mortgage-service";
-
+//import * as jsPDF from 'jspdf'
 @Component({
     selector: 'mortagage-info',
     templateUrl: './mortgage.component.html',
@@ -36,6 +36,19 @@ export class MortgageComponent implements OnInit {
             mlsId : new FormControl('', [Validators.required])
             });
         }
+
+/*download() {
+
+var doc = new jsPDF();
+doc.text(20, 20, 'Hello world!');
+doc.text(20, 30, 'This is client-side Javascript, pumping out a PDF.');
+doc.addPage();
+doc.text(20, 20, 'http://www.coding4developers.com/');
+
+// Save the PDF
+doc.save('Test.pdf');
+}
+*/
 
     onSubmit({ value, valid }: { value: MortgageModel, valid: boolean }) {
         console.log(value.mlsId);
