@@ -7,6 +7,7 @@ import { MortgageEligibilityService } from "../../http-service/mortgageeligibili
 import { MortgagePropertyModel } from "./mortgageproperty.model";
 import { MortgageModel } from "../mortgage/mortgage.model";
 import { MortgageService } from "../../http-service/mortgage-service";
+import { MortgageEligibiltyModel } from "../mortgageeligibility/mortgageeligibilty.model";
 
 @Component({
   selector: 'app-mortgageproperty',
@@ -26,12 +27,15 @@ purposeofLoanArr:string[];
         page: number = 1;
        totalRec : number;
        showTable:boolean = false;
+//mortgageeligibilitymodel:MortgageEligibiltyModel;
 
   constructor(private fb:FormBuilder,private mortgageEligibilityService:MortgageEligibilityService,public router: Router,
   private mortgageService:MortgageService) { 
     this.propertyData = new Array<any>();
      this.purposeofLoanArr=this.mortgageEligibilityService.purposeofLoan;
       this.showProperties();
+      // this.mortgageeligibilitymodel = this.mortgageEligibilityService.mortgageEligibilityModel;
+      // console.log("From constructor >>>>>>>>>>>"+this.mortgageeligibilitymodel.email);
   }
 
   ngOnInit() {
@@ -47,7 +51,7 @@ purposeofLoanArr:string[];
   onSubmitBack({ value, valid }: { value: MortgagePropertyModel, valid: boolean }) {
 
         console.log(">>>>>>>>>>>full name in ocmoponent" + value.typeOfProperty);
-        this.router.navigate(["/mortgagequotation"]);
+        this.router.navigate(["/mortgageeligibility"]);
         
        
        
@@ -58,7 +62,7 @@ purposeofLoanArr:string[];
 
         console.log(">>>>>>>>>>>full name in ocmoponent" + value.typeOfProperty);
         this.mortgageEligibilityService.mortgagePropertyModel=value;
-
+        console.log("Radio button value======>"+value.selectedMLSId);
       this.router.navigate(["/mortgagedocuments"]);
         
        
@@ -67,8 +71,9 @@ purposeofLoanArr:string[];
 
 
     onTypeofPropertyChange(typeofProperty: string) {
-      console.log("Type of employment change event fired"+typeofProperty)
-      if(typeofProperty=='Purchase or construct on identified property'){
+      console.log("Type of employment change event fired"+typeofProperty);
+      
+      if(typeofProperty=='Search Property'){
         this.propertyselected=true;
         this.propertynotselected=false;
       }else{
@@ -81,7 +86,9 @@ purposeofLoanArr:string[];
        this.mortgagePropertyModel = this.fb.group({
          typeOfProperty: new FormControl('', [Validators.required]),
           purposeofloan: new FormControl('', [Validators.required]),
-          mlsId : new FormControl('', [Validators.required])
+          mlsId : new FormControl('', [Validators.required]),
+          selectedMLSId:new FormControl('')
+
        });
      }
 

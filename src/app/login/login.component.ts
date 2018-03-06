@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit {
             //recipientsList => this.recipientsList = recipientsList
             console.log("login srvice obj------->"+this.loginService);
             this.loginService.userLoggedIn = true;
-            this.router.navigate(["/dashboard"]);
+            this.router.navigate(["/mortgageeligibility"]);
             this.alertFlag = false;
             this.loginDataService.userLoggedIn=true;
             this.loginDataService.userName=this.returnData.name;
@@ -140,7 +140,7 @@ createForm(){
     googleLogin(){
     this.sub = this._auth.login("google").subscribe(
       (data) => {
-                 console.log("After google stringify=============> "+JSON.stringify(data) );
+                //  console.log("After google stringify=============> "+JSON.stringify(data) );
                 // let obj:any = JSON.stringify(data);
                 //  for (let arr in obj) {
                 //     console.log ('key: ' +  arr + ',  value: ' + obj[arr]);
@@ -153,7 +153,7 @@ createForm(){
                   this.loginDataService.userLoggedIn=true;
                  this.loginDataService.userName=myObj.name;
                  this.loginDataService.image=myObj.image;
-                   this.router.navigate(["/dashboard"]);
+                   this.router.navigate(["/mortgageeligibility"]);
                }
 
                   

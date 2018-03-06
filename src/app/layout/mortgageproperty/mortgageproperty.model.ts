@@ -21,5 +21,6 @@ export class MortgagePropertyModel{
          streetNumberText:string;
          city:string;
          streetNumber:string;
+         selectedMLSId:string;
     
 }

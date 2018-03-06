@@ -1,12 +1,12 @@
 <div [@routerTransition]>
-    <h2 class="text-muted">Personal <small>Details</small></h2>
+    <h2 style="color:#d81e05">Personal Details</h2>
     <div class="row">
         <div class="col-lg-6">
             <!--(ngSubmit)="onSubmit(mortgageEligibiltyModel)"-->
-            <form [formGroup]="mortgageEligibiltyModel" novalidate >
+            <form [formGroup]="mortgageEligibiltyModel" novalidate>
                 <fieldset class="form-group">
                     <label>Name <span style="color: red">*</span></label>
-                    <input id="name" class="form-control" formControlName="name" required >
+                    <input id="name" class="form-control" formControlName="name" required>
                     <div *ngIf="!mortgageEligibiltyModel.controls.name?.valid && (mortgageEligibiltyModel.controls.name?.dirty || mortgageEligibiltyModel.controls.name?.touched)">
                         <div *ngIf="mortgageEligibiltyModel.controls['name'].hasError('required')" class="alert alert-danger">
                             Please enter User Name
@@ -23,8 +23,7 @@
                     </div>
                 </fieldset>
 
-
-                 <fieldset class="form-group">
+                <fieldset class="form-group">
                     <label>Gender<span style="color: red">*</span></label>
                     <label class="radio-inline">
                         <input type="radio" formControlName="gender" id="optionsRadiosInline1" value="male" checked="" >Male
@@ -32,19 +31,15 @@
                     <label class="radio-inline">
                         <input type="radio" formControlName="gender" id="optionsRadiosInline2" value="female">Female
                     </label>
-                   
+
                 </fieldset>
 
-
-                 
-
                 <fieldset class="form-group">
-   
-   
-   <label>Date of Birth <span style="color: red">*</span></label>
-           
-        <input class="form-control" type="date" formControlName="dateofbirth" >
-    </fieldset> 
+
+                <label>Date of Birth <span style="color: red">*</span></label>
+
+                    <input class="form-control" type="date" formControlName="dateofbirth">
+                </fieldset>
 
                 <fieldset class="form-group">
                     <label>Phone <span style="color: red">*</span></label>
@@ -65,63 +60,143 @@
                     </div>
                 </fieldset>
 
-                <fieldset class="form-group">
+                 <fieldset class="form-group">
                     <label>Email <span style="color: red">*</span></label>
                     <input class="form-control" formControlName="email">
-                    <div *ngIf="!mortgageEligibiltyModel.controls.salary?.valid && (mortgageEligibiltyModel.controls.salary?.dirty || mortgageEligibiltyModel.controls.salary?.touched)">
-                        <div *ngIf="mortgageEligibiltyModel.controls['salary'].hasError('required')" class="alert alert-danger">
-                            Please enter Salary
+                    <div *ngIf="!mortgageEligibiltyModel.controls.email?.valid && (mortgageEligibiltyModel.controls.email?.dirty || mortgageEligibiltyModel.controls.email?.touched)">
+                        <div *ngIf="mortgageEligibiltyModel.controls['email'].hasError('required')" class="alert alert-danger">
+                            Please enter Email
                         </div>
-                        <!--<div *ngIf="mortgageEligibiltyModel.controls['salary'].hasError('minlength')" class="alert alert-danger">
+                        <!--<div *ngIf="mortgageEligibiltyModel.controls['phone'].hasError('minlength')" class="alert alert-danger">
                             Please enter atleast 12 chars
                         </div>
-                        <div *ngIf="mortgageEligibiltyModel.controls['salary'].hasError('maxlength')" class="alert alert-danger">
+                        <div *ngIf="mortgageEligibiltyModel.controls['phone'].hasError('maxlength')" class="alert alert-danger">
                             The maximum limit for userId is 14 chars
                         </div>
-                        <div *ngIf="mortgageEligibiltyModel.controls['salary'].hasError('pattern')" class="alert alert-danger">
-                            Please enter Numerics along with '$' symbol
+                        <div *ngIf="mortgageEligibiltyModel.controls['phone'].hasError('pattern')" class="alert alert-danger">
+                            Please enter Numerics with special characters "(" & ")"
                         </div>-->
                     </div>
                 </fieldset>
 
-                 <input placeholder="search for location" autocorrect="off" autocapitalize="off" 
-                    spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
-                    <br/>
 
-                    <fieldset class="form-group">
+
+                <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
+                    #search formControlName="searchControl">
+                <br/>
+
+                <fieldset class="form-group">
                     <!--<label>Entered Address Details from Google Maps</label>-->
-                    <textarea class="form-control" rows="3" placeholder="Address" formControlName="address"
-                    [(ngModel)]='address'></textarea>
-                    </fieldset>
-              
+                    <textarea class="form-control" rows="3" placeholder="Address" formControlName="address" [(ngModel)]='address'></textarea>
+                </fieldset>
 
-                <!--<fieldset class="form-group">
-                    <label>Address <span style="color: red">*</span></label>
-                    <textarea class="form-control" rows="3" placeholder="Please Enter Address here.." formControlName="address" ></textarea>
-                     <div *ngIf="!mortgageEligibiltyModel.controls.address?.valid && (mortgageEligibiltyModel.controls.address?.dirty || mortgageEligibiltyModel.controls.address?.touched)">
-                        <div *ngIf="mortgageEligibiltyModel.controls['address'].hasError('required')" class="alert alert-danger">
-                            Please enter Address
-                        </div>-->
-                        <!--<div *ngIf="mortgageEligibiltyModel.controls['address'].hasError('minlength')" class="alert alert-danger">
-                            Please enter atleast 8 chars
+
+                <fieldset class="form-group">
+                    <label class="center-block">Type of Employment :  </label>
+                    <select class="form-control" formControlName="typeOfEmployment">
+              <option label="Select One"  selected></option>
+                <option *ngFor="let typeofemp of typeofEmploymentArr" [ngValue]="typeofemp">{{typeofemp}}</option>
+                 </select>
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label>Employer <span style="color: red">*</span></label>
+                    <input class="form-control" formControlName="employer">
+                    <div *ngIf="!mortgageEligibiltyModel.controls.employer?.valid && (mortgageEligibiltyModel.controls.employer?.dirty || mortgageEligibiltyModel.controls.employer?.touched)">
+                        <div *ngIf="mortgageEligibiltyModel.controls['employer'].hasError('required')" class="alert alert-danger">
+                            Please enter Salary
                         </div>
-                        <div *ngIf="mortgageEligibiltyModel.controls['address'].hasError('maxlength')" class="alert alert-danger">
-                            Please enter maximum limit of 16 chars
+
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label>Gross Income <span style="color: red">*</span></label>
+                    <input class="form-control" formControlName="grosssalary">
+                    <div *ngIf="!mortgageEligibiltyModel.controls.grosssalary?.valid && (mortgageEligibiltyModel.controls.grosssalary?.dirty || mortgageEligibiltyModel.controls.grosssalary?.touched)">
+                        <div *ngIf="mortgageEligibiltyModel.controls['grosssalary'].hasError('required')" class="alert alert-danger">
+                            Please enter Salary
                         </div>
-                        <div *ngIf="mortgageEligibiltyModel.controls['address'].hasError('pattern')" class="alert alert-danger">
-                            Please enter Alphbets only
-                        </div>-->
-                    <!--</div>
-                </fieldset>-->
+
+                    </div>
+                </fieldset>
+
+
+                <fieldset class="form-group">
+                    <label>Select Document</label>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <select class="form-control" formControlName="documentType" (ngModelChange)="onDocumentChange($event)">
+                  <option label="Select One"  selected></option>
+                 <option *ngFor="let document of documentsArr" [ngValue]="document" >{{document}}</option>
+               </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="file" (change)="onChange1($event)" required class="form-control " name="attach_file" id="attach_file">
+                        </div>
+                    </div>
+
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label>Uploaded Docs</label>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th width="30%">Document</th>
+                                <th width="30%">Name</th>
+                                <th>Size</th>
+                                <th>Remove</th>
+                                <!--<th>Progress</th>
+                                <th>Status</th>-->
+                                <!--<th>Actions</th>-->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of mortgageDocumentArr">
+                                <td><strong>{{ item?.documentTitle }}</strong></td>
+                                <td><strong>{{ item?.file?.name }}</strong></td>
+                                <td *ngIf="item" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                                <!--<td *ngIf="uploader.isHTML5">
+                                    <div class="progress" style="margin-bottom: 0;">
+                                        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                                    </div>
+                                </td>-->
+                                <!--<td class="text-center">
+                                    <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                    <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                    <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                                </td>-->
+                                <td nowrap>
+                                   <button type="button" class="btn btn-success btn-xs" (click)="removeUploadDoc(item)" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                                        <span class="glyphicon glyphicon-upload"></span> Remove
+                                    </button>
+                                   <!-- <button type="button" class="btn btn-warning btn-xs" (click)="item.cancel()" [disabled]="!item.isUploading">
+                                        <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-xs" (click)="item.remove()">
+                                        <span class="glyphicon glyphicon-trash"></span> Remove
+                                    </button>-->
+                                </td>
+                            </tr>
+                            <tr>
+                                <br/>
+                                <button class="btn rounded-btn" (click)=" onChange()">Upload All</button>
+                            </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+
+
+
+                <button class="btn rounded-btn" (click)="reset()">Reset</button> 
                
-       <!--[disabled]="!mortgageEligibiltyModel.valid"-->
-         <button class="btn rounded-btn" (click)="reset()">Reset</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <button class="btn rounded-btn"  (click)="onSubmit(mortgageEligibiltyModel)">Next</button>
-              
+                <button class="btn rounded-btn" (click)="onSubmit(mortgageEligibiltyModel)">Next</button>
+
                 <!--<p>Form value: {{ mortgageEligibiltyModel.value | json }}</p>-->
-               
-              
-            
+
+
+
             </form>
         </div>
     </div>

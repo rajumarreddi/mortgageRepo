@@ -6,5 +6,8 @@ export class MortgageEligibiltyModel{
     searchControl:string;
     gender: string;
     address: string;
+    typeOfEmployment:string;
+    grosssalary:string;
+    employer:string;
     
 }

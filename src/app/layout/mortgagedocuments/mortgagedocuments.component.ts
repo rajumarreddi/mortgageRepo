@@ -7,6 +7,7 @@ import { MortgageEligibilityService } from "../../http-service/mortgageeligibili
 import { LoginService } from "../../http-service/login-service";
 import { NgModel } from '@angular/forms';
 import { DcoSignStatus } from "./DocuSignStatus";
+import { RatesModel } from "./rates.model";
 @Component({
   selector: 'app-mortgagedocuments',
   templateUrl: './mortgagedocuments.component.html',
@@ -21,6 +22,9 @@ export class MortgagedocumentsComponent implements OnInit {
    selectedDoc:string;
    mortgageDocumentArr:MortgageDocumentsModel[]=[];
    mortgageDocument:MortgageDocumentsModel;
+   goalArr:string[]=[];
+   timeArr:string[]=[];
+   ratesArr:RatesModel[]=[];
 
 returnData : DcoSignStatus = null;
 
@@ -30,6 +34,9 @@ returnData : DcoSignStatus = null;
 
   ngOnInit() {
     this.createForm();
+    this.goalArr=this.mortgageEligibilityService.goalArr;
+    this.timeArr=this.mortgageEligibilityService.timeArr;
+    this.ratesArr=this.mortgageEligibilityService.ratesArr;
    
   }
 
@@ -49,7 +56,7 @@ returnData : DcoSignStatus = null;
         console.log(">>>>>>>>>>>full name in ocmoponent" + value.documentTitle);
         //this.mortgageEligibilityService.mortgagePropertyModel=value;
 
-      this.router.navigate(["/mortgagesubmission"]);
+      this.router.navigate(["/mortgagepreview"]);
         
        
        
@@ -59,9 +66,14 @@ returnData : DcoSignStatus = null;
      createForm(){
        this.mortgageDocumentsModel = this.fb.group({
          documentType: new FormControl('', [Validators.required]),
-          documentTitle: new FormControl('', [Validators.required])
-        
-
+         documentTitle: new FormControl('', [Validators.required]),
+         goal: new FormControl('', [Validators.required]),
+         purchaseprice: new FormControl('', [Validators.required]),
+         downpayment: new FormControl('', [Validators.required]),
+         timing: new FormControl('', [Validators.required]),
+         postalcode: new FormControl('', [Validators.required]),
+        ratesModel: new FormControl('', [Validators.required]),
+ratesModelId: new FormControl('', [Validators.required])
        });
      }
 
@@ -99,18 +111,7 @@ returnData : DcoSignStatus = null;
         this.loginService.uploadFileToDropBox(formData).subscribe(fileSaved => this.fileSaved = fileSaved);
          console.log("saved file"+this.fileSaved);
     }
-    // onChange(event: any) {
-    // let fileList: FileList = event.target.files;
-    // if(fileList.length > 0) {
-    //     let file: File = fileList[0];
-    //     let formData = new FormData();
-      
-    //     formData.append('file', file, file.name);
-    //    console.log("file. name is>>>>"+file.name);
-      
-    //     this.loginService.uploadFileToDropBox(formData).subscribe(fileSaved => this.fileSaved = fileSaved);
-    //    //  console.log("saved file"+this.fileSaved);
-    // }
+   
 }
 
 

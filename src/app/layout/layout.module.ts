@@ -13,6 +13,8 @@ import { MortgagedocumentsComponent } from './mortgagedocuments/mortgagedocument
 import { MortgagesubmissionComponent } from './mortgagesubmission/mortgagesubmission.component';
 import { MortgagepropertyComponent } from './mortgageproperty/mortgageproperty.component';
 import { PropertieslistComponent } from './propertieslist/propertieslist.component';
+import { MortgagepreviewComponent } from './mortgagepreview/mortgagepreview.component';
+import { MortgageEligibilityService } from "../http-service/mortgageeligibility-service";
 
 
 @NgModule({
@@ -23,5 +25,6 @@ import { PropertieslistComponent } from './propertieslist/propertieslist.compone
         NgbDropdownModule.forRoot()
     ],
     declarations: [LayoutComponent, SidebarComponent, HeaderComponent]
+   
 })
 export class LayoutModule {}

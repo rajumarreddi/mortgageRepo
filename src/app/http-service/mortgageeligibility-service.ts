@@ -11,18 +11,28 @@ import { MortgageEligibiltyModel } from "../layout/mortgageeligibility/mortgagee
 import { MortgagePropertyModel } from "../layout/mortgageproperty/mortgageproperty.model";
 import { MortgageQuotationModel } from "../layout/mortgagequotation/mortgagequotation.model";
 import { DcoSignStatus } from "./../layout/mortgagedocuments/DocuSignStatus";
+import { RatesModel } from "../layout/mortgagedocuments/rates.model";
 
 
 @Injectable()
 export class MortgageEligibilityService{
-    purposeofLoan = ['Purchase or construct on identified property', 
-    'Transfer my existing home loan', 'Purchase not yet identified property'];
+    purposeofLoan = ['Search Property', 
+     'List Properties'];
 
-    typesofEmployment=['Salaried','Self Employed Business','Self Employed Personal','Retired','Others'];
+    typesofEmployment=['Salaried',' Business'];
 
     recidencyStatus=['Resident of Canada','Non Resident of Canada','Holder of Premanent Residence'];
 
-    documentsArr=['Pan card','Aadhar Card','Driving Licence','Passport'];
+    documentsArr=['Perminent Residence Card','Citizenship Card','Driving Licence','Passport'];
+
+    goalArr=['Buy my first home','Sell my home and buy the next property','Switch my mortgage to $Bank','Renew or Review my mortgage my $Bank Mortgage'];
+    timeArr=['Before 6 Months','After 6 Months'];
+
+    ratesArr:RatesModel[]=[new RatesModel('1','5 Year Fixed','3.540%','3.560%'),
+    new RatesModel('2','7 Year Fixed','3.890%','3.910%'),
+    new RatesModel('3','5 Year Variable','$Bank Prime Rate + 0.000%','3.470%'),
+     new RatesModel('4','10 Year Fixed','6.400%','6.420%'),
+      new RatesModel('5','25 Year Fixed','8.750%','8.760%')];
     mortgageEligibilityModel:MortgageEligibiltyModel;
     mortgageQuoatationModel:MortgageQuotationModel;
     mortgagePropertyModel:MortgagePropertyModel;

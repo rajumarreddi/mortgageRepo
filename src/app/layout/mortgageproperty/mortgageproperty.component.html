@@ -1,22 +1,18 @@
 <div [@routerTransition]>
-  <h2 class="text-muted">Property <small>Details</small></h2>
+    <h2 style="color:#d81e05">Property Details</h2><br/>
   <div class="row">
     <div class="col-lg-6">
-      <!--(ngSubmit)="onSubmit(mortgageQuotationModel)"-->
       <form [formGroup]="mortgagePropertyModel" novalidate>
         <fieldset class="form-group">
-          <label class="center-block">Purpose of Loan :  </label>
+        
           <select class="form-control" formControlName="purposeofloan" (ngModelChange)="onTypeofPropertyChange($event)">
-              <option label="Select One" value="Select One"></option>
-          <select class="form-control" formControlName="purposeofloan">
               <option label="Select One" selected></option>
-        <option *ngFor="let purpofloan of purposeofLoanArr" [ngValue]="purpofloan">{{purpofloan}}</option>
-      </select>
+            <option *ngFor="let purpofloan of purposeofLoanArr" [ngValue]="purpofloan">{{purpofloan}}</option>
+			</select>
         </fieldset>
 
         <div *ngIf="propertyselected">                  
             <!--Search By MLS Id starts here-->
-
              <!--<h2 class="text-muted"><small>Property Info</small></h2>-->
 
              <!--<form [formGroup]="mortgageModel" novalidate>-->
@@ -28,30 +24,27 @@
                 <!--<p>{{ mortgageModel.value | json }}</p>-->
 <!--<button (click)="download()">download </button>-->
 
-                <!--Table with image start-->
-                <div class="container">
+                <!--Table with image start class="container"-->
+                
+                <div > 
                     <!-- [hidden]={{hideElement}}-->
-
-                    <h1 class="text-center">Property Details</h1>
+                    <!--<h1 class="text-center">Property Details</h1>-->
                     <!--raju-->
-                    <div id="header" style="height:15%;width:100%;">
+                    <!--style="height:15%;width:100%;"-->
+
+                    <div id="header" *ngIf="returnData">
                         <div style='float:left'>
-                            <img src={{returnData.photo1}} style="margin-left:5%;margin-top:5%" /><br/>
+                            <img src={{returnData.photo1}}  /><br/>
                         </div>
-                        <div style='float:leftt'>
+                    </div>       
+                </div>
+                 <div style='float:left' *ngIf="returnData">
                             <table class="table table-striped">
                                 <tr>
                                     <th>MLS Id:</th>
                                     <td>{{returnData.mlsId}}</td>
                                 </tr>
-                                <!--<tr>
-                    <th>photo1:</th>
-                    <td>Bill Gates</td>
-                </tr>
-                <tr>
-                    <th>photo2:</th>
-                    <td>Bill Gates</td>
-                </tr>-->
+                               
                                 <tr>
                                     <th>List Price:</th>
                                     <td>{{returnData.listPrice}}</td>
@@ -91,27 +84,16 @@
                 </tr>-->
 
                             </table>
-                        </div>
-                    </div>
-
-                    <!--raju-->
-       
-       
-      
-
-                </div>
-                <!--Table with image End-->           
-
-            <!--</form>-->
-      
+                        </div> 
+       </div>
             <!--Search By MLS Id starts here-->
-            </div>
+            
 
             <div *ngIf="propertynotselected">
-              <!--<p>property needs to search</p>-->
+             <!--<p>property needs to search</p>-->
                 <!--Show all properties start-->
 
-                   <!--<div *ngIf="!showTable">
+                <!--<div *ngIf="!showTable">
                     Loading please wait...
                 </div>-->   
 
@@ -120,6 +102,7 @@
     <table class="table table-bordered table-striped" border="1">
   <thead>
     <tr>
+      <th>Select One</th>
       <th>MLS Id</th>
       <th>List Price</th>
       <th>Area</th>
@@ -137,7 +120,9 @@
     <tr *ngFor="let rec of this.propertyData | paginate: { id: 'listing_pagination',
                                                       itemsPerPage: 10,
                                                       currentPage: page,
+      
                                                       totalItems: totalRec }">
+      <td><input type="radio" formControlName="selectedMLSId" value={{rec.mlsId}} checked="">{{rec.mlsId}}</td>                                                
       <td>{{rec.mlsId}}</td>
       <td>{{rec.listPrice}}</td>
       <td>{{rec.area}}</td>
@@ -155,15 +140,22 @@
 <div>
 		<pagination-controls  id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
 	</div>
-     </div>
+     </div>                
+
+
 
 
                 <!--Show all properties end-->
             </div>
+            
            <button class="btn rounded-btn" (click)="onSubmitBack(mortgagePropertyModel)">Back</button>
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button class="btn rounded-btn" (click)="onSubmitNext(mortgagePropertyModel)">Next</button>
       </form>
+   
       </div>
       </div>
     </div>
