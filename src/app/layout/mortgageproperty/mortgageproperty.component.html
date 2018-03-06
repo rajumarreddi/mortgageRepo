@@ -31,7 +31,7 @@
                     <!--<h1 class="text-center">Property Details</h1>-->
                     <!--raju-->
                     <!--style="height:15%;width:100%;"-->
-
+<br/>
                     <div id="header" *ngIf="returnData">
                         <div style='float:left'>
                             <img src={{returnData.photo1}}  /><br/>
@@ -39,7 +39,8 @@
                     </div>       
                 </div>
                  <div style='float:left' *ngIf="returnData">
-                            <table class="table table-striped">
+                     <br/>
+                            <table class="table table-striped" style="width:100%">
                                 <tr>
                                     <th>MLS Id:</th>
                                     <td>{{returnData.mlsId}}</td>
@@ -122,7 +123,7 @@
                                                       currentPage: page,
       
                                                       totalItems: totalRec }">
-      <td><input type="radio" formControlName="selectedMLSId" value={{rec.mlsId}} checked="">{{rec.mlsId}}</td>                                                
+      <td><input type="radio" formControlName="selectedMLSId" value={{rec.mlsId}} checked=""></td>                                                
       <td>{{rec.mlsId}}</td>
       <td>{{rec.listPrice}}</td>
       <td>{{rec.area}}</td>
@@ -147,12 +148,9 @@
 
                 <!--Show all properties end-->
             </div>
-            
-           <button class="btn rounded-btn" (click)="onSubmitBack(mortgagePropertyModel)">Back</button>
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <br/>  
+           <button class="btn rounded-btn" style="margin-right:474px" (click)="onSubmitBack(mortgagePropertyModel)">Back</button>
+     
         <button class="btn rounded-btn" (click)="onSubmitNext(mortgagePropertyModel)">Next</button>
       </form>
    
