@@ -137,4 +137,5 @@ purposeofLoanArr:string[];
         reset(){
             this.propertyData = new Array<any>();
         }
+        
 }

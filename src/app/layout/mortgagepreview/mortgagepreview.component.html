@@ -1,3 +1,74 @@
-<p>
-  mortgagepreview works!
-</p>
+<div [@routerTransition]>
+  <head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+    <h2 style="color:#d81e05">Preview</h2><br/>
+  <div class="row">
+    <div class="col-lg-6">
+      <form  novalidate>
+        <div class="container">
+          <div class="panel-group">
+            <div class="panel panel-default">
+              <div class="panel-heading">Personal Details</div>
+              <div class="panel-body">
+                <div class="col-lg-8">
+                <div class="col-md-4">
+                <fieldset class="form-group">
+                    <label>Name:</label>
+                  <label>{{this.mortgageEligibilityModel.name}}</label>
+
+                </fieldset>
+                </div>
+                  <div class="col-md-4">
+                 <fieldset class="form-group">
+                    <label>Date of Birth:</label>
+                  <label>{{this.mortgageEligibilityModel.dateofbirth}}</label>
+
+                </fieldset>
+                  </div>
+                </div>
+                 <fieldset class="form-group">
+                    <label>Phone:</label>
+                  <label>{{this.mortgageEligibilityModel.phone}}</label>
+
+                </fieldset>
+                </div>
+               
+            </div>
+            <br/>
+            <div class="panel panel-default">
+              <div class="panel-heading">Property Details</div>
+              <div class="panel-body"> <div class="col-lg-8">
+                <div class="col-md-4">
+                <fieldset class="form-group">
+                    <label>MLSID:</label>
+                  <label>{{this.mortgagePropertyModel.mlsId}}</label>
+
+                </fieldset>
+                </div>
+                  <div class="col-md-4">
+                 <fieldset class="form-group">
+                    <label>streetName:</label>
+                  <label>{{this.mortgagePropertyModel.streetName}}</label>
+
+                </fieldset>
+                  </div>
+                </div></div>
+            </div>
+            <br/>
+            <div class="panel panel-default">
+              <div class="panel-heading">Mortgage Plans</div>
+              <div class="panel-body">Panel Content</div>
+            </div>
+          </div>
+        </div>
+          <button class="btn rounded-btn" style="margin-right:474px" (click)="onSubmitBack()">Back</button> 
+      </form>
+    </div>
+  </div>
+</div>
