@@ -8,6 +8,7 @@ import { LoginService } from "../../http-service/login-service";
 import { NgModel } from '@angular/forms';
 import { DcoSignStatus } from "./DocuSignStatus";
 import { RatesModel } from "./rates.model";
+import { LoginDataService } from "../../login/logindataservice";
 @Component({
   selector: 'app-mortgagedocuments',
   templateUrl: './mortgagedocuments.component.html',
@@ -28,8 +29,10 @@ export class MortgagedocumentsComponent implements OnInit {
 
 returnData : DcoSignStatus = null;
 
-  constructor(private fb:FormBuilder,private mortgageEligibilityService:MortgageEligibilityService,public router: Router,private loginService:LoginService) {
+  constructor(private fb:FormBuilder,private mortgageEligibilityService:MortgageEligibilityService,public router: Router,private loginService:LoginService,
+  private loginDataService:LoginDataService) {
     this.documentsArr=this.mortgageEligibilityService.documentsArr;
+    console.log("In login Data sssssssssssssssss  -->"+this.loginDataService.mortgagePropertyModel.mlsId);
    }
 
   ngOnInit() {
@@ -54,7 +57,7 @@ returnData : DcoSignStatus = null;
     onSubmitNext({ value, valid }: { value: MortgageDocumentsModel, valid: boolean }) {
 
         console.log(">>>>>>>>>>>full name in ocmoponent" + value.documentTitle);
-        //this.mortgageEligibilityService.mortgagePropertyModel=value;
+        this.loginDataService.mortgageDocumentsModel=value;
 
       this.router.navigate(["/mortgagepreview"]);
         

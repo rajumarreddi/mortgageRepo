@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginDataService } from "../../login/logindataservice";
 
 @Component({
   selector: 'app-mortgagepreview',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MortgagepreviewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private loginService:LoginDataService) {
+    console.log("Consttttttttttttttttt postal code  -->"+this.loginService.mortgageDocumentsModel.postalcode);
+   }
 
   ngOnInit() {
   }

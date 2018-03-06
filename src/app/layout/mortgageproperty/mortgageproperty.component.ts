@@ -8,6 +8,7 @@ import { MortgagePropertyModel } from "./mortgageproperty.model";
 import { MortgageModel } from "../mortgage/mortgage.model";
 import { MortgageService } from "../../http-service/mortgage-service";
 import { MortgageEligibiltyModel } from "../mortgageeligibility/mortgageeligibilty.model";
+import { LoginDataService } from "../../login/logindataservice";
 
 @Component({
   selector: 'app-mortgageproperty',
@@ -30,12 +31,12 @@ purposeofLoanArr:string[];
 //mortgageeligibilitymodel:MortgageEligibiltyModel;
 
   constructor(private fb:FormBuilder,private mortgageEligibilityService:MortgageEligibilityService,public router: Router,
-  private mortgageService:MortgageService) { 
+  private mortgageService:MortgageService, private loginDataService:LoginDataService) { 
     this.propertyData = new Array<any>();
      this.purposeofLoanArr=this.mortgageEligibilityService.purposeofLoan;
       this.showProperties();
       // this.mortgageeligibilitymodel = this.mortgageEligibilityService.mortgageEligibilityModel;
-      // console.log("From constructor >>>>>>>>>>>"+this.mortgageeligibilitymodel.email);
+       console.log("From constructor mortgageEligibiltyModel.name >>>>>>>>>>>"+this.loginDataService.mortgageEligibiltyModel.address);
   }
 
   ngOnInit() {
@@ -63,6 +64,7 @@ purposeofLoanArr:string[];
         console.log(">>>>>>>>>>>full name in ocmoponent" + value.typeOfProperty);
         this.mortgageEligibilityService.mortgagePropertyModel=value;
         console.log("Radio button value======>"+value.selectedMLSId);
+        this.loginDataService.mortgagePropertyModel=value;
       this.router.navigate(["/mortgagedocuments"]);
         
        

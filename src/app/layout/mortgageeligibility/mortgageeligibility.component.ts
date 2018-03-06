@@ -8,6 +8,7 @@ import { MortgageEligibilityService } from "../../http-service/mortgageeligibili
 import { MapsAPILoader } from "@agm/core";
 import { MortgageDocumentsModel } from "../mortgagedocuments/mortgagedocuments.model";
 import { MortgageEligibilityDocumentsModel } from "./mortgageeligibilitydocuments.model";
+import { LoginDataService } from "../../login/logindataservice";
 
 @Component({
   selector: 'app-mortgageeligibility',
@@ -30,7 +31,7 @@ export class MortgageeligibilityComponent implements OnInit {
   constructor(private fb:FormBuilder,private loginService:LoginService,
   public router: Router,private mortgageEligibilityService:MortgageEligibilityService,
   private mapsAPILoader: MapsAPILoader,
-     private ngZone: NgZone) {
+     private ngZone: NgZone, private loginDataService:LoginDataService) {
     
       }
 
@@ -39,14 +40,14 @@ export class MortgageeligibilityComponent implements OnInit {
     this.typeofEmploymentArr=this.mortgageEligibilityService.typesofEmployment;
     this.createForm();
 
-    if (this.mortgageEligibilityService.mortgageEligibilityModel) {
+    if (this.loginDataService.mortgageEligibiltyModel) {
       this.mortgageEligibiltyModel.patchValue({
-        name: this.mortgageEligibilityService.mortgageEligibilityModel.name,
-        phone: this.mortgageEligibilityService.mortgageEligibilityModel.phone,
-        email: this.mortgageEligibilityService.mortgageEligibilityModel.email,
-        dateofbirth: this.mortgageEligibilityService.mortgageEligibilityModel.dateofbirth,
-        gender: this.mortgageEligibilityService.mortgageEligibilityModel.gender,
-        address: this.mortgageEligibilityService.mortgageEligibilityModel.address
+        name: this.loginDataService.mortgageEligibiltyModel.name,
+        phone: this.loginDataService.mortgageEligibiltyModel.phone,
+        email: this.loginDataService.mortgageEligibiltyModel.email,
+        dateofbirth: this.loginDataService.mortgageEligibiltyModel.dateofbirth,
+        gender: this.loginDataService.mortgageEligibiltyModel.gender,
+        address: this.loginDataService.mortgageEligibiltyModel.address
       });
     }
 
@@ -74,6 +75,10 @@ export class MortgageeligibilityComponent implements OnInit {
 
         console.log(">>>>>>>>>>>full name in ocmoponent" + value.address);
         this.mortgageEligibilityService.mortgageEligibilityModel=value;
+
+        //Setting values to login service
+        this.loginDataService.mortgageEligibiltyModel = value;
+
         this.router.navigate(["/mortgageproperty"]);
        
     }
