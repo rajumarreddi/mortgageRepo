@@ -139,14 +139,14 @@
                 </fieldset>
 
                 <fieldset class="form-group">
-                    <label>Uploaded Docs</label>
-                    <table class="table">
+                    <label *ngIf="mortgageDocumentArr.length > 0">Uploaded Docs</label>
+                    <table class="table table-bordered table-striped" border="1" *ngIf="mortgageDocumentArr.length > 0">
                         <thead>
                             <tr>
                                 <th width="30%">Document</th>
                                 <th width="30%">Name</th>
                                 <th>Size</th>
-                                <th>Remove</th>
+                                <th>Action</th>
                                 <!--<th>Progress</th>
                                 <th>Status</th>-->
                                 <!--<th>Actions</th>-->
@@ -154,8 +154,8 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let item of mortgageDocumentArr">
-                                <td><strong>{{ item?.documentTitle }}</strong></td>
-                                <td><strong>{{ item?.file?.name }}</strong></td>
+                                <td>{{ item?.documentTitle }}</td>
+                                <td>{{ item?.file?.name }}</td>
                                 <td *ngIf="item" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
                                 <!--<td *ngIf="uploader.isHTML5">
                                     <div class="progress" style="margin-bottom: 0;">
@@ -168,20 +168,21 @@
                                     <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
                                 </td>-->
                                 <td nowrap>
-                                   <button type="button" class="btn btn-success btn-xs" (click)="removeUploadDoc(item)" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                                   <!-- <button type="button" class="btn btn-success btn-xs" (click)="removeUploadDoc(item)" [disabled]="item.isReady || item.isUploading || item.isSuccess">
                                         <span class="glyphicon glyphicon-upload"></span> Remove
                                     </button>
-                                   <!-- <button type="button" class="btn btn-warning btn-xs" (click)="item.cancel()" [disabled]="!item.isUploading">
+                                   <button type="button" class="btn btn-warning btn-xs" (click)="item.cancel()" [disabled]="!item.isUploading">
                                         <span class="glyphicon glyphicon-ban-circle"></span> Cancel
-                                    </button>
-                                    <button type="button" class="btn btn-danger btn-xs" (click)="item.remove()">
-                                        <span class="glyphicon glyphicon-trash"></span> Remove
                                     </button>-->
+                                    <button type="button" class="btn btn-danger btn-xs" (click)="removeUploadDoc(item)">
+                                        <span class="glyphicon glyphicon-trash"></span> Remove
+                                    </button>
                                 </td>
                             </tr>
-                            <tr>
-                                <br/>
-                                <button class="btn rounded-btn" (click)=" onChange()">Upload All</button>
+                            <tr colspan="4">
+                           <td  style="text-align: center" colspan="4">
+                                <button class="btn btn-success btn-xs"  (click)=" onChange()"><span class="glyphicon glyphicon-upload"></span>Upload All</button>
+                           </td>
                             </tr>
                         </tbody>
                     </table>
@@ -189,9 +190,9 @@
 
 
 
-                <button class="btn rounded-btn" (click)="reset()">Reset</button> 
+                <button class="btn rounded-btn" style="margin-right:474px" (click)="reset()">Reset</button> 
                
-                <button class="btn rounded-btn" (click)="onSubmit(mortgageEligibiltyModel)">Next</button>
+                <button class="btn rounded-btn"  (click)="onSubmit(mortgageEligibiltyModel)">Next</button>
 
                 <!--<p>Form value: {{ mortgageEligibiltyModel.value | json }}</p>-->
 

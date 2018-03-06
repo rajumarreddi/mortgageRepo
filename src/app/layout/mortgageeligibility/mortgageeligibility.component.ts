@@ -139,8 +139,11 @@ onChange1(event: any) {
 
 removeUploadDoc(doc:MortgageEligibilityDocumentsModel){
   console.log("Removed id doc is"+doc.id);
-this.mortgageDocumentArr.filter(mortgageDoc=>mortgageDoc.id == doc.id);
+this.mortgageDocumentArr=this.mortgageDocumentArr.filter(mortgageDoc=>mortgageDoc.id != doc.id);
 console.log("After array is "+this.mortgageDocumentArr);
+for(let obj in this.mortgageDocumentArr){
+ 
+}
 
 }
 

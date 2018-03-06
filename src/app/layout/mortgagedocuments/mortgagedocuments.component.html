@@ -59,7 +59,7 @@
                 </fieldset>
 
  <fieldset class="form-group">
-                        <label class="center-block">Time :  </label>
+                        <label class="center-block">Time<span style="color: red">*</span> </label>
                         <select class="form-control" formControlName="timing">
               <option label="Select One"  selected></option>
                 <option *ngFor="let timeval of timeArr" [ngValue]="timeval">{{timeval}}</option>
@@ -125,7 +125,7 @@
     </div>
 
 <br/>
-<button class="btn rounded-btn" (click)="onSubmitBack(mortgageDocumentsModel)">Back</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button class="btn rounded-btn" style="margin-right:96px" (click)="onSubmitBack(mortgageDocumentsModel)">Back</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <button class="btn rounded-btn" (click)="onSubmitNext(mortgageDocumentsModel)">Next</button>  
 
 
