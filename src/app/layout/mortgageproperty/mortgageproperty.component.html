@@ -148,9 +148,10 @@
 
                 <!--Show all properties end-->
             </div>
+
           <br/> 
           <div *ngIf="returnData">
-          <button class="btn rounded-btn" style="margin-right:474px" (click)="showmap()">Explore Neighbourhood</button>   
+          <button class="btn rounded-btn" style="margin-right:474px;background-color: red;color: white;" (click)="showmap()">Explore Neighbourhood</button>   
           </div>
           <br/>
           <div *ngIf="showMap">
@@ -165,9 +166,15 @@
 
 
           
-           <button class="btn rounded-btn" style="margin-right:474px" (click)="onSubmitBack(mortgagePropertyModel)">Back</button>
-        <button class="btn rounded-btn" (click)="onSubmitNext(mortgagePropertyModel)">Next</button>
+           <!-- <button class="btn rounded-btn" style="margin-right:474px" (click)="onSubmitBack(mortgagePropertyModel)">Back</button>
+        <button class="btn rounded-btn" (click)="onSubmitNext(mortgagePropertyModel)">Next</button> -->
         
+
+          <br/>  
+           <button class="btn rounded-btn" style="margin-right:474px;background-color: red;color: white;" (click)="onSubmitBack(mortgagePropertyModel)">Back</button>
+     
+        <button class="btn rounded-btn" style="background-color: red;color: white;" (click)="onSubmitNext(mortgagePropertyModel)">Next</button>
+
       </form>
    
       </div>

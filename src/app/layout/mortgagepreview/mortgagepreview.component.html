@@ -1,76 +1,175 @@
 <div [@routerTransition]>
+
   <head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-    <h2 style="color:#d81e05">Preview</h2><br/>
-  <div class="row">
-    <div class="col-lg-6">
-      <form  novalidate>
-       <div class="container" id="previewId">
-          <div class="panel-group">
-            <div class="panel panel-default">
-              <div class="panel-heading">Personal Details</div>
-              <div class="panel-body">
-                <div class="col-lg-8">
-                <div class="col-md-4">
-                <fieldset class="form-group">
-                    <label>Name:</label>
-                  <label>{{this.mortgageEligibilityModel.name}}</label>
-
-                </fieldset>
-                </div>
-                  <div class="col-md-4">
-                 <fieldset class="form-group">
-                    <label>Date of Birth:</label>
-                  <label>{{this.mortgageEligibilityModel.dateofbirth}}</label>
-
-                </fieldset>
-                  </div>
-                </div>
-                 <fieldset class="form-group">
-                    <label>Phone:</label>
-                  <label>{{this.mortgageEligibilityModel.phone}}</label>
-
-                </fieldset>
-                </div>
-               
-            </div>
-            <br/>
-            <div class="panel panel-default">
-              <div class="panel-heading">Property Details</div>
-              <div class="panel-body"> <div class="col-lg-8">
-                <div class="col-md-4">
-                <fieldset class="form-group">
-                    <label>MLSID:</label>
-                  <label>{{this.mortgagePropertyModel.mlsId}}</label>
-
-                </fieldset>
-                </div>
-                  <div class="col-md-4">
-                 <fieldset class="form-group">
-                    <label>streetName:</label>
-                  <label>{{this.mortgagePropertyModel.streetName}}</label>
-
-                </fieldset>
-                  </div>
-                </div></div>
-            </div>
-            <br/>
-            <div class="panel panel-default">
-              <div class="panel-heading">Mortgage Plans</div>
-              <div class="panel-body">Panel Content</div>
-            </div>
-          </div>
+    <title>Bootstrap Example</title>
+  </head>
+  <h2 style="color:#d81e05"> Mortgage Preview</h2><br/>
+  
+   
+      <form novalidate>
+        
+        <div class="container" id="previewId">
+          <h5 style="color:#d81e05">Personal Details</h5>
+          <table id="eligibleId" class="table table-bordered table-striped" style="table-layout: fixed;
+    width: 100%;" border="1">
+                                <tr>
+                                    <th>Name:</th>
+                                    <td>{{this.mortgageEligibilityModel.name}}</td>
+                                    <th>Gender:</th>
+                                    <td>{{this.mortgageEligibilityModel.gender}}</td>
+                                    <th>DOB:</th>
+                                    <td>{{this.mortgageEligibilityModel.dateofbirth}}</td>
+                                    <th>Ph.No.:</th>
+                                    <td>{{this.mortgageEligibilityModel.phone}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Email:</th>
+                                    <td>{{this.mortgageEligibilityModel.email}}</td>
+                                    <th>Emp.Type:</th>
+                                    <td>{{this.mortgageEligibilityModel.typeOfEmployment}}</td>
+                                    <th>Income:</th>
+                                    <td>{{this.mortgageEligibilityModel.grosssalary}}</td>
+                                    <th>Employer:</th>
+                                    <td>{{this.mortgageEligibilityModel.employer}}</td>
+                                </tr>       
+                                <tr>
+                                   <th colspan="1">Address:</th>
+                                    <td colspan="7">{{this.mortgageEligibilityModel.address}}</td>
+                                </tr>                
+                            </table>                          
         </div>
-          <button class="btn rounded-btn" style="margin-right:474px" (click)="onSubmitBack()">Back</button> 
-          <button class="btn rounded-btn"  (click)="onSubmitNext()">Next</button> 
-          <!--<button id="submit" class="btn rounded-btn"  (click)="downloadPdf()">Generate PDF</button>-->
+        <div>
+    <table id="basic-tablebackUp1"  style="display: none;" >
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>DOB</th>
+      <th>Ph.No.</th>
+      <th>Email</th>
+	  <th>Income</th>	  
+	  <th>City</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{this.mortgageEligibilityModel.name}}</td>
+       <td>{{this.mortgageEligibilityModel.gender}}</td>
+         <td>{{this.mortgageEligibilityModel.dateofbirth}}</td>
+        <td>{{this.mortgageEligibilityModel.phone}}</td>
+         <td>{{this.mortgageEligibilityModel.email}}</td>
+	  <td>{{this.mortgageEligibilityModel.grosssalary}}</td>
+	   <td>{{this.mortgageEligibilityModel.city}}</td>
+    </tr>    
+  </tbody>
+</table>
+</div>
+  <br/>
+
+         <div class="container">
+          <h5 style="color:#d81e05">Property Details</h5>
+          <table id="propertyId" class="table table-bordered table-striped" style="table-layout: fixed;
+    width: 100%;" border="1">
+                                <tr>
+                                    <th>MLSId:</th>
+                                    <td>{{this.mortgagePropertyModel.mlsId}}</td>
+                                    <th>List:</th>
+                                    <td>{{this.mortgagePropertyModel.listPrice}}</td>
+                                    <th>Area:</th>
+                                    <td>{{this.mortgagePropertyModel.area}}</td>
+                                    <th>City:</th>
+                                    <td>{{this.mortgagePropertyModel.city}}</td>
+                                </tr>
+                                <tr>
+                                    <th>State:</th>
+                                    <td>{{this.mortgagePropertyModel.state}}</td>
+                                    <th>Country:</th>
+                                    <td>{{this.mortgagePropertyModel.country}}</td>
+                                    <th>PostalCode:</th>
+                                    <td>{{this.mortgagePropertyModel.postalCode}}</td>
+                                    <th>Street Name:</th>
+                                    <td>{{this.mortgagePropertyModel.streetName}}</td>
+                                </tr>       
+                                <tr>
+                                   <th colspan="1">Amenities:</th>
+                                    <td colspan="7">{{mortgagePropertyModel.amenities}}</td>
+                                </tr>                
+                            </table>                          
+        </div>
+<div>
+    <table id="basic-PropertybackUp1"  style="display: none;" >
+  <thead>
+    <tr>
+      <th>MLSId</th>
+      <th>List</th>
+      <th>Area</th>
+      <th>City</th>  
+      <th>State</th>
+      <th>Country</th>   
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{mortgagePropertyModel.mlsId}}</td>
+       <td>{{mortgagePropertyModel.listPrice}}</td>
+         <td>{{mortgagePropertyModel.area}}</td>
+        <td>{{this.mortgagePropertyModel.city}}</td>
+        <td>{{this.mortgagePropertyModel.state}}</td>
+         <td>{{this.mortgagePropertyModel.country}}</td>
+    </tr>    
+  </tbody>
+</table>
+</div>
+         <br/>
+
+         <div class="container">
+          <h5 style="color:#d81e05">Chosen Mortgage Plan</h5>
+          <table class="table table-bordered table-striped" style="table-layout: fixed;
+    width: 100%;" border="1">
+                                <tr>
+                                    <th>Goal:</th>
+                                    <td>{{this.mortgageDocumentsModel.goal}}</td>
+                                    <th>Purchase Price:</th>
+                                    <td>{{this.mortgageDocumentsModel.purchaseprice}}</td>
+                                    <th>Down Payment:</th>
+                                    <td>{{this.mortgageDocumentsModel.downpayment}}</td>
+                                    <th>Postal Code:</th>
+                                    <td>{{this.mortgageDocumentsModel.postalcode}}</td>
+                                </tr>
+                                <tr>
+                                   <th colspan="1">Term:</th>
+                                   <td colspan="7">Selected Term Here</td>
+                                    <!--<td colspan="7">{{this.mortgageDocumentsModel.amenities}}</td>-->
+                                </tr>                
+                            </table>                          
+        </div>
+
+        <div>
+    <table id="basic-PropertybackUp2"  style="display: none;" >
+  <thead>
+    <tr>
+      <th>Goal</th>
+      <th>Purchase Price</th>
+      <th>Down Payment</th>     
+      <th>Term</th>      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>{{this.mortgageDocumentsModel.goal}}</td>
+       <td>{{this.mortgageDocumentsModel.purchaseprice}}</td>
+        <td>{{this.mortgageDocumentsModel.downpayment}}</td>
+        <td>{{this.mortgageDocumentsModel.postalcode}}</td>
+    </tr>    
+  </tbody>
+</table>
+</div>
+
+        <button class="btn rounded-btn" style="margin-right:474px;background-color: red;color: white;" (click)="onSubmitBack()">Back</button> 
+          <button class="btn rounded-btn"  (click)="onSubmitNext()" style="margin-right:474px;background-color: red;color: white;">Next</button> 
+        <button id="submit" class="btn rounded-btn" (click)="downloadPdf()" style="background-color: red;color: white;">Generate PDF</button> <! --(click)="downloadPdf()" -->
+        
       </form>
-    </div>
-  </div>
+   
+ 
 </div>

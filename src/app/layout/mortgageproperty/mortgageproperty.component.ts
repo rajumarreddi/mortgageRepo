@@ -28,8 +28,13 @@ purposeofLoanArr:string[];
         page: number = 1;
        totalRec : number;
        showTable:boolean = false;
+
        showMap:boolean = false;
        postalCode:string = '77096';
+
+       selectedPropertyDetails:MortgagePropertyModel[]=[];
+        mortgageProp:MortgagePropertyModel=new MortgagePropertyModel();
+
 //mortgageeligibilitymodel:MortgageEligibiltyModel;
 
   constructor(private fb:FormBuilder,private mortgageEligibilityService:MortgageEligibilityService,public router: Router,
@@ -96,8 +101,26 @@ purposeofLoanArr:string[];
        });
      }
 
-     onSubmit({ value, valid }: { value: MortgageModel, valid: boolean }) {
+     onSubmit({ value, valid }: { value: MortgagePropertyModel, valid: boolean }) {
         console.log(value.mlsId);
+        if(null != value.mlsId || undefined != value.mlsId){
+            this.loginDataService.selectedMLSId = value.mlsId;
+             this.selectedPropertyDetails=this.propertyData.filter(prop=>prop.mlsId == value.mlsId);
+        }else if(null != value.selectedMLSId || undefined != value.selectedMLSId){
+             this.loginDataService.selectedMLSId = value.selectedMLSId;
+           this.selectedPropertyDetails=this.propertyData.filter(prop=>prop.mlsId == value.selectedMLSId);
+       
+        }else{
+          this.loginDataService.selectedMLSId = "1005192";
+              this.selectedPropertyDetails=this.propertyData.filter(prop=>prop.mlsId == '1005192');
+        }
+      this.populateModelObj(this.selectedPropertyDetails[0]);
+       // this.loginDataService.mortgagePropertyModel=this.selectedPropertyDetails[0];
+
+       
+        console.log("AAAAAAAAAAAAAA");
+         console.log(this.loginDataService.mortgagePropertyModel);
+          console.log("AAAAAAAAAAAAAA");
          this.mortgageService.getPropertyDetails(value.mlsId)
          .subscribe(returnData=>this.returnData = returnData); 
          console.log("below is return data"); 
@@ -125,6 +148,7 @@ purposeofLoanArr:string[];
          console.log("Above is showProperties data"); 
          console.log("4"); 
           this.totalRec = this.propertyData.length;
+          this.loginDataService.propertyData = this.propertyData;
           console.log("Total records -------> "+this.totalRec);
           console.log("Page number ------->"+this.page);
          if(null != this.propertyData || undefined != this.propertyData){
@@ -150,4 +174,13 @@ purposeofLoanArr:string[];
 
 
         
+
+
+        populateModelObj(arr:MortgagePropertyModel){
+          this.mortgageProp.mlsId=arr.mlsId;
+          console.log("Amenities values are"+arr.amenities);
+          this.mortgageProp.amenities=arr.amenities;
+          this.loginDataService.mortgagePropertyModel=this.mortgageProp;
+          this.mortgageEligibilityService.mortgagePropertyModel=this.mortgageProp;
+        }
 }
