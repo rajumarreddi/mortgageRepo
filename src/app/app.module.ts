@@ -21,7 +21,8 @@ import { AuthService } from "angular2-social-login/dist";
 import { MapsAPILoader, AgmCoreModule } from "@agm/core";
 import * as $ from 'jquery';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
-
+import { BootstrapModalModule } from 'ng2-bootstrap-modal';
+import { ConfirmationmodelComponent } from "./layout/confirmationmodel/confirmationmodel.component";
 
 
 // AoT requires an exported function for factories
@@ -42,7 +43,8 @@ export function createTranslateLoader(http: HttpClient) {
         HttpClientModule,
         FormsModule,HttpModule,
         ReactiveFormsModule,
-            
+          BootstrapModalModule,  
+          BootstrapModalModule.forRoot({container:document.body}), 
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -52,7 +54,8 @@ export function createTranslateLoader(http: HttpClient) {
         }),
         AppRoutingModule
     ],
-    declarations: [AppComponent],
+    
+    declarations: [AppComponent,ConfirmationmodelComponent],
     providers: [AuthGuard,LoginService,LoginModel,LoginDataService,AuthService, MortgageModel],
     bootstrap: [AppComponent]
 })

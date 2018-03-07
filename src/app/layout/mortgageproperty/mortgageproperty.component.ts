@@ -65,7 +65,7 @@ purposeofLoanArr:string[];
         this.mortgageEligibilityService.mortgagePropertyModel=value;
         console.log("Radio button value======>"+value.selectedMLSId);
         this.loginDataService.mortgagePropertyModel=value;
-      this.router.navigate(["/mortgagedocuments"]);
+      this.router.navigate(["/mortgageadjucation"]);
         
        
        

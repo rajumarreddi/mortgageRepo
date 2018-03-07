@@ -16,6 +16,7 @@ import { PropertieslistComponent } from './propertieslist/propertieslist.compone
 import { MortgagepreviewComponent } from './mortgagepreview/mortgagepreview.component';
 import { MortgageEligibilityService } from "../http-service/mortgageeligibility-service";
 import { MortgagesuccessComponent } from './mortgagesuccess/mortgagesuccess.component';
+import { ConfirmationmodelComponent } from "./confirmationmodel/confirmationmodel.component";
 
 
 @NgModule({

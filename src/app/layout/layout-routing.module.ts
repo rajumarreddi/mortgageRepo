@@ -15,6 +15,8 @@ const routes: Routes = [
             { path: 'mortgageeligibility', loadChildren: './mortgageeligibility/mortgageeligibility.module#MortgageEligibilityModule' },
             { path: 'mortgagequotation', loadChildren: './mortgagequotation/mortgagequotation.module#MortgageQuotationModule' },
             { path: 'mortgageproperty', loadChildren: './mortgageproperty/mortgageproperty.module#MortgagePropertyModule' },
+             { path: 'mortgageadjucation', loadChildren: './mortgageadjucation/mortgageadjucation.module#MortgageAdjucationModule' },
+             { path: 'confirmation', loadChildren: './confirmationmodel/confirmationmodel.module#ConfirmationModelModule' }, 
             { path: 'mortgagedocuments', loadChildren: './mortgagedocuments/mortgagedocuments.module#MortgageDocumentsModule' },
             { path: 'mortgagepreview', loadChildren: './mortgagepreview/mortgagepreview.module#MortgagePreviewModule' },
             { path: 'mortgagesubmission', loadChildren: './mortgagesubmission/mortgagesubmission.module#MortgageSubmissionModule' },
