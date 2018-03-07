@@ -20,10 +20,28 @@ export class MortgagepreviewComponent implements OnInit {
 mortgagePreviewModel:FormGroup;
 mortgageEligibilityModel:MortgageEligibiltyModel;
 mortgagePropertyModel:MortgagePropertyModel;
+mortgageDocumentsModel:MortgageDocumentsModel;
   constructor(private loginService:LoginDataService,public router: Router) {
     console.log("Consttttttttttttttttt postal code  -->"+this.loginService.mortgageDocumentsModel.postalcode);
     this.mortgageEligibilityModel=this.loginService.mortgageEligibiltyModel;
+    this.mortgageDocumentsModel=this.loginService.mortgageDocumentsModel;
     this.mortgagePropertyModel=this.loginService.mortgagePropertyModel;
+    console.log(this.mortgagePropertyModel);
+    this.mortgagePropertyModel.amenities='House,Community Pool,Garden/ Greenbelt/ Trails,Playground,Recreation Room,Sauna/ Spa/ Hot Tub';
+    this.mortgagePropertyModel.listPrice='20714261';
+    this.mortgagePropertyModel.area='Spring/Klein';
+    this.mortgagePropertyModel.state='Texas';
+    this.mortgagePropertyModel.country='United States';
+    this.mortgagePropertyModel.postalCode='77096';
+    this.mortgagePropertyModel.streetName='East Sweet Bottom Br';
+    this.mortgagePropertyModel.city='Houston';
+
+    this.mortgageDocumentsModel.goal='Buy my first home';
+    this.mortgageDocumentsModel.purchaseprice='7789989';
+    this.mortgageDocumentsModel.downpayment='55639';
+    this.mortgageDocumentsModel.postalcode='77096';
+   console.log(this.mortgageDocumentsModel.ratesModelId);
+
     console.log(this.mortgageEligibilityModel.address);
    }
 

@@ -29,6 +29,7 @@ purposeofLoanArr:string[];
        totalRec : number;
        showTable:boolean = false;
        selectedPropertyDetails:MortgagePropertyModel[]=[];
+        mortgageProp:MortgagePropertyModel=new MortgagePropertyModel();
 //mortgageeligibilitymodel:MortgageEligibiltyModel;
 
   constructor(private fb:FormBuilder,private mortgageEligibilityService:MortgageEligibilityService,public router: Router,
@@ -108,7 +109,8 @@ purposeofLoanArr:string[];
           this.loginDataService.selectedMLSId = "1005192";
               this.selectedPropertyDetails=this.propertyData.filter(prop=>prop.mlsId == '1005192');
         }
-        this.loginDataService.mortgagePropertyModel=this.selectedPropertyDetails[0];
+      this.populateModelObj(this.selectedPropertyDetails[0]);
+       // this.loginDataService.mortgagePropertyModel=this.selectedPropertyDetails[0];
 
        
         console.log("AAAAAAAAAAAAAA");
@@ -157,4 +159,13 @@ purposeofLoanArr:string[];
             this.propertyData = new Array<any>();
         }
         
+
+
+        populateModelObj(arr:MortgagePropertyModel){
+          this.mortgageProp.mlsId=arr.mlsId;
+          console.log("Amenities values are"+arr.amenities);
+          this.mortgageProp.amenities=arr.amenities;
+          this.loginDataService.mortgagePropertyModel=this.mortgageProp;
+          this.mortgageEligibilityService.mortgagePropertyModel=this.mortgageProp;
+        }
 }
