@@ -47,7 +47,7 @@ returnData : DcoSignStatus = null;
    onSubmitBack({ value, valid }: { value: MortgageDocumentsModel, valid: boolean }) {
 
         console.log(">>>>>>>>>>>full name in ocmoponent" + value.documentTitle);
-        this.router.navigate(["/mortgageproperty"]);
+        this.router.navigate(["/mortgageadjucation"]);
         
        
        

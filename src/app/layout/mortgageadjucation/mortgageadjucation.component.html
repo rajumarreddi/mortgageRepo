@@ -1,0 +1,207 @@
+<div [@routerTransition]>
+     
+    <h2 style="color:#d81e05">Adjudication</h2>
+
+   <div class="row">
+        <div class="col-lg-6">
+            <!--(ngSubmit)="onSubmit(mortgageEligibiltyModel)"-->
+            <form [formGroup]="mortgageAdjucationModel" novalidate>
+
+             <fieldset class="form-group">
+            <div class="control-group">
+               <label>First Name<span style="color: red">*</span></label>
+              
+                <div class="controls">
+                    <input type="text" class="form-control" pattern="\w+ \w+.*" title="First and last name" required="" formControlName="firstName">
+                    
+                </div>
+            </div>
+             </fieldset>
+
+              <fieldset class="form-group">
+            <div class="control-group">
+               <label>Last Name<span style="color: red">*</span></label>
+              
+                <div class="controls">
+                    <input type="text" class="form-control" pattern="\w+ \w+.*" title="First and last name" required="" formControlName="lastName">
+                    
+                </div>
+            </div>
+             </fieldset>
+
+
+
+               <fieldset class="form-group">
+            <div class="control-group">
+               <label>Date of Birth<span style="color: red">*</span></label>
+              
+                <div class="controls">
+                  <input class="form-control" type="date" formControlName="dateofbirth">
+                    
+                </div>
+            </div>
+             </fieldset>
+
+
+
+             <!--<fieldset class="form-group">
+              <div class="controls">
+                    <div class="row">
+                        <div class="col-md-9">
+                             <label>Date Of Birth</label>
+                        </div>
+                        
+                        <div class="col-md-3">
+                           <label ng-value="mortgageEligibilityModel.dateofbirth"></label>
+                        </div>
+                    </div>
+                </div>
+          
+               </fieldset>
+-->
+
+
+
+
+             
+              <!--<fieldset class="form-group">
+            <div class="control-group">
+                <label>Card Number<span style="color: red">*</span></label>
+              
+                <div class="controls">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="First four digits" required="" formControlName="ccnumber1">
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Second four digits" required="" formControlName="ccnumber2">
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Third four digits" required="" formControlName="ccnumber3">
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Fourth four digits" required="" formControlName="ccnumber4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+              </fieldset>-->
+               <!--<fieldset class="form-group">
+            <div class="control-group">
+               <label>Card Expiry Date<span style="color: red">*</span></label>
+              
+                <div class="controls">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <select class="form-control" formControlName="month">
+              <option label="Select One"  selected></option>
+                <option *ngFor="let month of monthArr" [ngValue]="month">{{month}}</option>
+                 </select>
+                        </div>
+                        
+                        <div class="col-md-3">
+                            <select class="form-control" formControlName="year">
+              <option label="Select One"  selected></option>
+                <option *ngFor="let year of yearArr" [ngValue]="year">{{year}}</option>
+                 </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+               </fieldset>
+             <fieldset class="form-group">
+            <div class="control-group">
+                <label>Card CVV<span style="color: red">*</span></label>
+               
+                <div class="controls">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required="" formControlName="cvvnum">
+                        </div>
+                        <div class="col-md-8"></div>
+                    </div>
+                </div>
+            </div>
+             </fieldset>-->
+
+        <fieldset class="form-group">
+            <div class="control-group">
+               <label>SIN Number</label>
+              
+                <div class="controls">
+                    <input type="text" class="form-control" pattern="\w+ \w+.*" title="SIN Number" required="" formControlName="SINnum">
+                </div>
+            </div>
+             </fieldset>
+
+
+             <fieldset class="form-group">
+            <div class="control-group">
+               <label>Monthly Expenses</label>
+              
+                <div class="controls">
+                    <input type="text" class="form-control" pattern="\w+ \w+.*"  required="" formControlName="expenses">
+                </div>
+            </div>
+             </fieldset>
+
+            <div class="control-group">
+              <label label-default="" class="control-label"></label>
+              <div class="controls">
+                <button type="submit" class="btn btn-primary" (click)="onSubmit(mortgageAdjucationModel)">Check Eligibility</button> 
+                <button type="button" class="btn btn-default">Cancel</button>
+              </div>
+
+              <br/>
+              <div *ngIf="checked" style="width:100%">
+
+<p style="color:green;font-size: 22px;">{{message}}</p>
+
+              </div>
+            </div>
+          <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>-->
+
+
+
+          <br/><br/>
+         <button class="btn rounded-btn" style="margin-right:474px" (click)="onSubmitBack(mortgageAdjucationModel)">Back</button>
+
+                <button class="btn rounded-btn" (click)="onSubmitNext()" *ngIf="checked">Next</button>
+ <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+
+ 
+
+               
+                 </form>
+
+
+   
+  
+    </div>
+   </div>
+</div>
+
+
+
+               
+        

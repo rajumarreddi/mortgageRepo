@@ -113,7 +113,7 @@ onChange1(event: any) {
         this.mortgageDocument.id=this.mortgageDocumentArr.length+1;
         this.mortgageDocument.documentTitle=this.selectedDoc;
         this.mortgageDocument.file=file;
-        this.mortgageDocument.status='Not Yet Initialized';
+        this.mortgageDocument.status='Not Verified';
        this.mortgageDocument.verificationYello=true;
        this.mortgageDocument.verificationGreen=false;
        this.mortgageDocument.verificationRed=false;

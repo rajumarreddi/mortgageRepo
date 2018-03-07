@@ -27,6 +27,8 @@ export class MortgageEligibilityService{
 
     goalArr=['Buy my first home','Sell my home and buy the next property','Switch my mortgage to $Bank','Renew or Review my mortgage my $Bank Mortgage'];
     timeArr=['Before 6 Months','After 6 Months'];
+    monthArr=['January','February','March','April','May','June','July','August','September','October','November','December'];
+    yearArr=['2018','2019','2020','2021','2022','2023','2024','2025'];
 
     ratesArr:RatesModel[]=[new RatesModel('1','5 Year Fixed','3.540%','3.560%'),
     new RatesModel('2','7 Year Fixed','3.890%','3.910%'),

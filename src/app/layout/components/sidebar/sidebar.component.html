@@ -12,6 +12,10 @@
             <i class="fa fa-fw fa-building"></i>&nbsp;{{ 'Property Details' | translate }}
         </a>
 
+        <a [routerLink]="['/mortgageadjucation']" [routerLinkActive]="['router-link-active']" class="list-group-item" style="pointer-events: none; cursor: default;"> 
+            <i class="fa fa-fw fa-building"></i>&nbsp;{{ 'Adjudication' | translate }}
+        </a>
+
 
         <a [routerLink]="['/mortgagedocuments']" [routerLinkActive]="['router-link-active']" class="list-group-item" style="pointer-events: none; cursor: default;">
             <i class="fa fa-fw fas fa-calculator"></i>&nbsp;{{ 'Choose Mortgage Plans' | translate }}
