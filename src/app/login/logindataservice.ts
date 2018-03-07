@@ -15,4 +15,6 @@ export class LoginDataService{
     mortgagePropertyModel:MortgagePropertyModel;
     mortgageDocumentsModel:MortgageDocumentsModel;
     loginModel:LoginModel;
+    selectedMLSId:string;
+    propertyData: Array<any>;
 }
