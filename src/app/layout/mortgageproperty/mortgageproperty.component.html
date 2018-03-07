@@ -71,7 +71,7 @@
                                     <td>{{returnData.postalCode}}</td>
                                 </tr>
                                 <tr>
-                                    <th>Stree tName:</th>
+                                    <th>StreetName:</th>
                                     <td>{{returnData.streetName}}</td>
                                 </tr>
                                 <tr>
@@ -104,15 +104,15 @@
   <thead>
     <tr>
       <th>Select One</th>
-      <th>MLS Id</th>
+      <th>MLS ID</th>
       <th>List Price</th>
       <th>Area</th>
       <th>Amenities</th>
 	  <th>State</th>
 	  <th>Country</th>
 	  <th>PostalCode</th>
-	  <th>Stree tName</th>
-      <th>city</th>
+	  <th>StreetName</th>
+      <th>City</th>
 	  <th>Image</th>
 
     </tr>
@@ -148,10 +148,26 @@
 
                 <!--Show all properties end-->
             </div>
-          <br/>  
+          <br/> 
+          <div *ngIf="returnData">
+          <button class="btn rounded-btn" style="margin-right:474px" (click)="showmap()">Explore Neighbourhood</button>   
+          </div>
+          <br/>
+          <div *ngIf="showMap">
+          <iframe
+          width="1200"
+          height="450"
+          frameborder="0" style="border:0"
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBF4vo3a6ZGEBUH4nmunVeMu3EWLxef6Wc
+            &q=77096" allowfullscreen>
+        </iframe>
+        </div>
+
+
+          
            <button class="btn rounded-btn" style="margin-right:474px" (click)="onSubmitBack(mortgagePropertyModel)">Back</button>
-     
         <button class="btn rounded-btn" (click)="onSubmitNext(mortgagePropertyModel)">Next</button>
+        
       </form>
    
       </div>

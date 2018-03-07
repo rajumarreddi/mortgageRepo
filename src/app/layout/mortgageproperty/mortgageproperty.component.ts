@@ -28,6 +28,8 @@ purposeofLoanArr:string[];
         page: number = 1;
        totalRec : number;
        showTable:boolean = false;
+       showMap:boolean = false;
+       postalCode:string = '77096';
 //mortgageeligibilitymodel:MortgageEligibiltyModel;
 
   constructor(private fb:FormBuilder,private mortgageEligibilityService:MortgageEligibilityService,public router: Router,
@@ -137,5 +139,15 @@ purposeofLoanArr:string[];
         reset(){
             this.propertyData = new Array<any>();
         }
+
+        showmap(){
+          if((null != this.returnData && this.returnData != undefined)){
+            this.showMap = true;
+          }//else if(null != this.propertyData && this.propertyData != undefined){
+            //this.showMap = true;
+         // }
+        }
+
+
         
 }

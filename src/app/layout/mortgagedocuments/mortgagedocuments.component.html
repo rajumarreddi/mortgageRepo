@@ -1,25 +1,28 @@
-
 <div [@routerTransition]>
-     
+
     <h2 style="color:#d81e05">Choose Mortgage Plans</h2>
 
-   <div class="row">
+    <div class="row">
         <div class="col-lg-6">
             <!--(ngSubmit)="onSubmit(mortgageEligibiltyModel)"-->
             <form [formGroup]="mortgageDocumentsModel" novalidate>
 
-                    <fieldset class="form-group">
-                        <label class="center-block">What is your goal? <span style="color: red">*</span> </label>
-                        <select class="form-control" formControlName="goal">
-              <option label="Select One"  selected></option>
-                <option *ngFor="let goal of goalArr" [ngValue]="goal">{{goal}}</option>
-                 </select>
-                    </fieldset>
+                <fieldset class="form-group">
+                    <label class="center-block">What is your goal?
+                        <span style="color: red">*</span>
+                    </label>
+                    <select class="form-control" formControlName="goal">
+                        <option label="Select One" selected></option>
+                        <option *ngFor="let goal of goalArr" [ngValue]="goal">{{goal}}</option>
+                    </select>
+                </fieldset>
 
 
 
                 <fieldset class="form-group">
-                    <label>Purchase Price <span style="color: red">*</span></label>
+                    <label>Purchase Price
+                        <span style="color: red">*</span>
+                    </label>
                     <input id="purchaseprice" class="form-control" formControlName="purchaseprice" required>
                     <div *ngIf="!mortgageDocumentsModel.controls.purchaseprice?.valid && (mortgageDocumentsModel.controls.purchaseprice?.dirty || mortgageDocumentsModel.controls.purchaseprice?.touched)">
                         <div *ngIf="mortgageDocumentsModel.controls['purchaseprice'].hasError('required')" class="alert alert-danger">
@@ -40,11 +43,13 @@
 
 
                 <fieldset class="form-group">
-                    <label>Down Payment <span style="color: red">*</span></label>
+                    <label>Down Payment
+                        <span style="color: red">*</span>
+                    </label>
                     <input id="downpayment" class="form-control" formControlName="downpayment" required>
                     <div *ngIf="!mortgageDocumentsModel.controls.downpayment?.valid && (mortgageDocumentsModel.controls.downpayment?.dirty || mortgageDocumentsModel.controls.downpayment?.touched)">
                         <div *ngIf="mortgageDocumentsModel.controls['downpayment'].hasError('required')" class="alert alert-danger">
-                            Please enter Down  Payment
+                            Please enter Down Payment
                         </div>
                         <!--<div *ngIf="mortgageEligibiltyModel.controls['name'].hasError('minlength')" class="alert alert-danger">
                             Please enter atleast 8 chars
@@ -58,20 +63,24 @@
                     </div>
                 </fieldset>
 
-            <fieldset class="form-group">
-                        <label class="center-block">What is your timing?<span style="color: red">*</span> </label>
-                        <select class="form-control" formControlName="timing">
-              <option label="Select One"  selected></option>
-                <option *ngFor="let timeval of timeArr" [ngValue]="timeval">{{timeval}}</option>
-                 </select>
-                    </fieldset>
+                <fieldset class="form-group">
+                    <label class="center-block">What is your timing?
+                        <span style="color: red">*</span>
+                    </label>
+                    <select class="form-control" formControlName="timing">
+                        <option label="Select One" selected></option>
+                        <option *ngFor="let timeval of timeArr" [ngValue]="timeval">{{timeval}}</option>
+                    </select>
+                </fieldset>
 
-               
+
 
 
 
                 <fieldset class="form-group">
-                    <label>Postal Code <span style="color: red">*</span></label>
+                    <label>Postal Code
+                        <span style="color: red">*</span>
+                    </label>
                     <input id="purchaseprice" class="form-control" formControlName="postalcode" required>
                     <div *ngIf="!mortgageDocumentsModel.controls.postalcode?.valid && (mortgageDocumentsModel.controls.postalcode?.dirty || mortgageDocumentsModel.controls.postalcode?.touched)">
                         <div *ngIf="mortgageDocumentsModel.controls['postalcode'].hasError('required')" class="alert alert-danger">
@@ -90,68 +99,124 @@
                 </fieldset>
 
 
-                 <fieldset class="form-group">
-                    <label>Featured Rates <span style="color: red">*</span></label>
-                     <table class="table table-bordered table-striped" border="1">
-                    <thead>
-                    <tr>
-                        <th>Select</th>
-                        <th>Term</th>
-                        <th>Special Offers</th>
-                        <th>APR</th>
-                       
+                <fieldset class="form-group">
+                    <label style="color:#d81e05;font-size: 20px;">Based on your Credit Score we have offered below Mortgage Plans for You
+                        <span style="color: red">*</span>
+                    </label>
+                    <table class="table table-bordered table-striped" border="1">
+                        <thead>
+                            <tr>
+                                <th>Select</th>
+                                <th>Term</th>
+                                <th>Special Offers</th>
+                                <th>APR</th>
 
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let rate of ratesArr">
-      <td><input type="radio" formControlName="ratesModelId" value={{rate.id}} checked=""></td>
-      <td>{{rate.term}}</td>
-      <td>{{rate.specialoffers}}</td>
-      <td>{{rate.APR}}</td>
-    </tr>
-  </tbody>
-                     </table>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let rate of ratesArr">
+                                <td>
+                                    <input type="radio" formControlName="ratesModelId" value={{rate.id}} checked="">
+                                </td>
+                                <td>{{rate.term}}</td>
+                                <td>{{rate.specialoffers}}</td>
+                                <td>{{rate.APR}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </fieldset>
-
-
-
-
-
-
- <div style="width:960px; position:relative;">
-        <iframe src="https://www.mortgagecalculator.net/embeddable/v2/?size=1" width="100%" frameborder=0 scrolling=no height=308></iframe>
-        <!--<a style="width: 100%;background: #075269;color: #fff;text-align: center;font-weight: bold;display: block;clear: both;padding: 3px 0;font-size: 12px;text-transform: uppercase;font-family: arial;text-decoration: none; cursor:pointer; margin-top:-36px; position:absolute;" href="https://www.mortgagecalculator.net/">Powered By www.MortgageCalculator.net</a>-->
-    </div>
-
-<br/>
-<button class="btn rounded-btn" style="margin-right:96px" (click)="onSubmitBack(mortgageDocumentsModel)">Back</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button class="btn rounded-btn" (click)="onSubmitNext(mortgageDocumentsModel)">Next</button>  
-
-
-
-
-
-
-
+                <br/>
+                <button class="btn rounded-btn" style="margin-right:96px" (click)="onSubmitBack(mortgageDocumentsModel)">Back</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button class="btn rounded-btn" (click)="onSubmitNext(mortgageDocumentsModel)">Next</button>
             </form>
-            
+        </div>
 
+        <div class="col-lg-6">
+            <style>
+                @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700);
+                .HOMES-mortgage-calculator-widget {
+                    font: 12px/1.5em 'Open Sans', Arial, sans-serif;
+                    color: #484848;
+                    padding: 7px 10px 10px;
+                    overflow: hidden;
+                    clear: both;
+                }
+
+                .HOMES-mortgage-calculator-widget::before,
+                .HOMES-mortgage-calculator-widget::after {
+                    content: '';
+                    display: table;
+                    width: 100%;
+                    clear: both;
+                }
+
+                .HOMES-mortgage-calculator-widget h1 {
+                    color: #0054a0;
+                    margin: 0;
+                    font-size: 24px;
+                    line-height: 1em;
+                    font-weight: 700;
+                    text-align: center;
+                }
+
+                .HOMES-mortgage-calculator-widget .mortgage-calculator-frame {
+                    border: 0;
+                    border-bottom: 1px solid #eeeae9;
+                    margin: 0 0 .5em;
+                    overflow: hidden;
+                    height: 500px;
+                }
+
+                .HOMES-mortgage-calculator-widget a {
+                    font-weight: 700;
+                    color: #0054a0;
+                    text-decoration: none;
+                    font-size: .75em;
+                    width: 240px;
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+
+                .HOMES-mortgage-calculator-widget a:hover {
+                    text-decoration: underline;
+                }
+
+                .HOMES-mortgage-calculator-widget .logo {
+                    margin: 1em auto;
+                    background: transparent url(https://cdn1.static-homes.com/media/portalimgcache/widget/builder/logo-widget.png) 0 0 no-repeat;
+                    width: 139px;
+                    height: 22px;
+                    overflow: hidden;
+                    direction: ltr;
+                    text-indent: -3000px;
+                    display: block;
+                    float: none;
+                }
+
+                .HOMES-mortgage-calculator-widget .footer a {
+                    margin: 0;
+                }
+
+                .HOMES-mortgage-calculator-widget .footer .link {
+                    float: none;
+                    width: auto;
+                    margin: 0;
+                    max-width: 50%;
+                    display: block;
+                }
+            </style>
+            <!--[if lte IE 8]><style>.HOMES-mortgage-calculator-widget h1,.HOMES-mortgage-calculator-widget a{font-family:"Open Sans Bold", Arial, sans-serif;}</style><![endif]-->
+            <div class="HOMES-mortgage-calculator-widget">
+                <h1 style="color:#d81e05">Mortgage Calculator</h1>
+                <BR />
+                <iframe src="https://www.homes.com/widget/mortgage-calculator/frame/?text_color=%230054a0&cobrand=" class="mortgage-calculator-frame"
+                    width="100%" seamless frameborder="0"></iframe>
+                <script src="https://www.homes.com/widget/mortgage-calculator/remote.js?text_color=%230054a0&cobrand=" type="text/javascript"></script>
+            </div>
+        </div>​
+    </div>
 </div>
-    
-
-
-
-
-
-         
-
-
- 
-
-
-
-
-      
-
-

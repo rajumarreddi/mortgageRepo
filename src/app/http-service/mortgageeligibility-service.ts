@@ -19,21 +19,21 @@ export class MortgageEligibilityService{
     purposeofLoan = ['Search Property', 
      'List Properties'];
 
-    typesofEmployment=['Salaried',' Business'];
+    typesofEmployment=['Salaried','Business'];
 
-    recidencyStatus=['Resident of Canada','Non Resident of Canada','Holder of Premanent Residence'];
+    recidencyStatus=['Resident of Canada','Non Resident of Canada','Holder of Premanent Resident'];
 
     documentsArr=['Permanent Resident Card','Citizenship Card','Driving Licence','Passport'];
-    finalDocumentsArr=['Pay slip','Bank statement','Tax Returns'];
+    finalDocumentsArr=['Pay Slip','Bank Statement','Tax Returns'];
 
-    goalArr=['Buy my first home','Sell my home and buy the next property','Switch my mortgage to $Bank','Renew or Review my mortgage my $Bank Mortgage'];
+    goalArr=['Buy my first home','Sell my home and buy the next property','Switch my mortgage to Speed Racers Mortgage','Renew or Review my mortgage to Speed Racers Mortgage'];
     timeArr=['Before 6 Months','After 6 Months'];
     monthArr=['January','February','March','April','May','June','July','August','September','October','November','December'];
     yearArr=['2018','2019','2020','2021','2022','2023','2024','2025'];
 
     ratesArr:RatesModel[]=[new RatesModel('1','5 Year Fixed','3.540%','3.560%'),
     new RatesModel('2','7 Year Fixed','3.890%','3.910%'),
-    new RatesModel('3','5 Year Variable','$Bank Prime Rate + 0.000%','3.470%'),
+    new RatesModel('3','5 Year Variable','Speed Racers Mortgage Prime Rate + 0.000%','3.470%'),
      new RatesModel('4','10 Year Fixed','6.400%','6.420%'),
       new RatesModel('5','25 Year Fixed','8.750%','8.760%')];
     mortgageEligibilityModel:MortgageEligibiltyModel;
