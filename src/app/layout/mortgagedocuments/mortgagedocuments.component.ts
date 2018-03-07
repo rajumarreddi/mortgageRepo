@@ -118,17 +118,17 @@ ratesModelId: new FormControl('', [Validators.required])
 }
 
 
-onDocuSignChange(event: any)  {
-    console.log("onChange1 =======");
-    this.mortgageEligibilityService.onDocuSignServiceCall(event).subscribe((returnData : DcoSignStatus) => {this.returnData = returnData});
-    console.log(this.returnData);
-}
+// onDocuSignChange(event: any)  {
+//     console.log("onChange1 =======");
+//     this.mortgageEligibilityService.onDocuSignServiceCall(event).subscribe((returnData : DcoSignStatus) => {this.returnData = returnData});
+//     console.log(this.returnData);
+// }
 
-onClickSignatureBtn(){
+// onClickSignatureBtn(){
   
-        console.log("After hitting service ---> " + this.returnData.docuSgingURL);
-        window.open(this.returnData.docuSgingURL, "_blank");
-}
+//         console.log("After hitting service ---> " + this.returnData.docuSgingURL);
+//         window.open(this.returnData.docuSgingURL, "_blank");
+// }
 //  onDocuSignChange(event: any) : Observable<DcoSignStatus>{
 //    this.returnData = new DcoSignStatus();
 //     console.log("onChange =======");
