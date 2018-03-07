@@ -27,7 +27,10 @@ export class MortgageeligibilityComponent implements OnInit {
    fileSaved:boolean=false;
    typeofEmploymentArr:string[];
     documentsArr:string[];
-    
+    pdfSrc: string = './../temp/test.pdf';
+    // verificationGreen:boolean=false;
+    // verificationRed:boolean=false;
+    // verificationYello:boolean=false;
   constructor(private fb:FormBuilder,private loginService:LoginService,
   public router: Router,private mortgageEligibilityService:MortgageEligibilityService,
   private mapsAPILoader: MapsAPILoader,
@@ -110,6 +113,10 @@ onChange1(event: any) {
         this.mortgageDocument.id=this.mortgageDocumentArr.length+1;
         this.mortgageDocument.documentTitle=this.selectedDoc;
         this.mortgageDocument.file=file;
+        this.mortgageDocument.status='Not Yet Initialized';
+       this.mortgageDocument.verificationYello=true;
+       this.mortgageDocument.verificationGreen=false;
+       this.mortgageDocument.verificationRed=false;
         this.mortgageDocumentArr.push(this.mortgageDocument);
     }
 
@@ -133,6 +140,27 @@ onChange1(event: any) {
         console.log("all form data ::::::::::"  + formData);
         this.loginService.uploadFileToDropBox(formData).subscribe(fileSaved => this.fileSaved = fileSaved);
          console.log("saved file"+this.fileSaved);
+        var num:number = 0; 
+        var i:number; 
+       
+
+      for(i = num;i< this.mortgageDocumentArr.length;i++) {
+        console.log("Length of Array"+this.mortgageDocumentArr.length);
+         if(i%2 ==1){
+           console.log("Inside failed status");
+          this.mortgageDocumentArr[i].status='Failed';
+           this.mortgageDocumentArr[i].verificationYello=false;
+       this.mortgageDocumentArr[i].verificationGreen=false;
+       this.mortgageDocumentArr[i].verificationRed=true;
+         }else{
+            console.log("Inside success status");
+           this.mortgageDocumentArr[i].status='Success';
+            this.mortgageDocumentArr[i].verificationRed=false;
+          this.mortgageDocumentArr[i].verificationGreen=true;
+          this.mortgageDocumentArr[i].verificationYello=false;
+         }
+        }
+        
     }
    
 }

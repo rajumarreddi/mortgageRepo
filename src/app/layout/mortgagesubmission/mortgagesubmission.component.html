@@ -1,3 +1,21 @@
-<p>
-  mortgagesubmission works!
-</p>
+<div [@routerTransition]>
+     
+    <h2 style="color:#d81e05">Mortgage Submission</h2>
+
+   <div class="row">
+        <div class="col-lg-6">
+            <!--(ngSubmit)="onSubmit(mortgageEligibiltyModel)"-->
+            <form [formGroup]="mortgageDocumentsModel" novalidate>
+
+                    <!--<fieldset class="form-group">
+                        <label class="center-block">Goal <span style="color: red">*</span> </label>
+                        <select class="form-control" formControlName="goal">
+              <option label="Select One"  selected></option>
+                <option *ngFor="let goal of goalArr" [ngValue]="goal">{{goal}}</option>
+                 </select>
+                    </fieldset>-->
+            </form>
+        </div>
+   </div>
+</div>
+

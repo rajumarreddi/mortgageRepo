@@ -6,6 +6,7 @@ import { routerTransition } from "../../router.animations";
 import { MortgageDocumentsModel } from "../mortgagedocuments/mortgagedocuments.model";
 import { MortgagePropertyModel } from "../mortgageproperty/mortgageproperty.model";
 import { Router } from '@angular/router';
+import * as jsPDF from 'jspdf';
 @Component({
   selector: 'app-mortgagepreview',
   templateUrl: './mortgagepreview.component.html',
@@ -31,5 +32,28 @@ mortgagePropertyModel:MortgagePropertyModel;
   onSubmitBack(){
  this.router.navigate(["/mortgagedocuments"]);
   }
+
+   onSubmitNext(){
+ this.router.navigate(["/mortgagesubmission"]);
+  }
+
+downloadPdf(){
+var doc = new jsPDF(); 
+var specialElementHandlers = { 
+    '#editor': function (element, renderer) { 
+        return true; 
+    } 
+};
+$('#submit').click(function () { 
+    doc.fromHTML($('#previewId').html(), 15, 15, { 
+        'width': 190, 
+            'elementHandlers': specialElementHandlers 
+    }); 
+    doc.save('MortigageInfo.pdf'); 
+});
+}
+
+
+
 
 }

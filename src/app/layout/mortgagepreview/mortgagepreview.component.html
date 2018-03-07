@@ -11,7 +11,7 @@
   <div class="row">
     <div class="col-lg-6">
       <form  novalidate>
-        <div class="container">
+       <div class="container" id="previewId">
           <div class="panel-group">
             <div class="panel panel-default">
               <div class="panel-heading">Personal Details</div>
@@ -68,6 +68,8 @@
           </div>
         </div>
           <button class="btn rounded-btn" style="margin-right:474px" (click)="onSubmitBack()">Back</button> 
+          <button class="btn rounded-btn"  (click)="onSubmitNext()">Next</button> 
+          <!--<button id="submit" class="btn rounded-btn"  (click)="downloadPdf()">Generate PDF</button>-->
       </form>
     </div>
   </div>

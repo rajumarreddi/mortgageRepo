@@ -19,7 +19,8 @@ import { HttpModule } from '@angular/http';
 import { LoginDataService } from "./login/logindataservice";
 import { AuthService } from "angular2-social-login/dist";
 import { MapsAPILoader, AgmCoreModule } from "@agm/core";
-
+import * as $ from 'jquery';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 
 

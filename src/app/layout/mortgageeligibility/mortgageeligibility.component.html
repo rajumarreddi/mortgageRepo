@@ -36,7 +36,7 @@
 
                 <fieldset class="form-group">
 
-                <label>Date of Birth <span style="color: red">*</span></label>
+                    <label>Date of Birth <span style="color: red">*</span></label>
 
                     <input class="form-control" type="date" formControlName="dateofbirth">
                 </fieldset>
@@ -60,7 +60,7 @@
                     </div>
                 </fieldset>
 
-                 <fieldset class="form-group">
+                <fieldset class="form-group">
                     <label>Email <span style="color: red">*</span></label>
                     <input class="form-control" formControlName="email">
                     <div *ngIf="!mortgageEligibiltyModel.controls.email?.valid && (mortgageEligibiltyModel.controls.email?.dirty || mortgageEligibiltyModel.controls.email?.touched)">
@@ -92,7 +92,7 @@
 
 
                 <fieldset class="form-group">
-                    <label class="center-block">Type of Employment :  </label>
+                    <label class="center-block">Type of Employment<span style="color: red">*</span> </label>
                     <select class="form-control" formControlName="typeOfEmployment">
               <option label="Select One"  selected></option>
                 <option *ngFor="let typeofemp of typeofEmploymentArr" [ngValue]="typeofemp">{{typeofemp}}</option>
@@ -147,6 +147,7 @@
                                 <th width="30%">Name</th>
                                 <th>Size</th>
                                 <th>Action</th>
+                                <th>Verification Status</th>
                                 <!--<th>Progress</th>
                                 <th>Status</th>-->
                                 <!--<th>Actions</th>-->
@@ -157,6 +158,7 @@
                                 <td>{{ item?.documentTitle }}</td>
                                 <td>{{ item?.file?.name }}</td>
                                 <td *ngIf="item" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                                
                                 <!--<td *ngIf="uploader.isHTML5">
                                     <div class="progress" style="margin-bottom: 0;">
                                         <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
@@ -168,7 +170,7 @@
                                     <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
                                 </td>-->
                                 <td nowrap>
-                                   <!-- <button type="button" class="btn btn-success btn-xs" (click)="removeUploadDoc(item)" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                                    <!-- <button type="button" class="btn btn-success btn-xs" (click)="removeUploadDoc(item)" [disabled]="item.isReady || item.isUploading || item.isSuccess">
                                         <span class="glyphicon glyphicon-upload"></span> Remove
                                     </button>
                                    <button type="button" class="btn btn-warning btn-xs" (click)="item.cancel()" [disabled]="!item.isUploading">
@@ -178,21 +180,31 @@
                                         <span class="glyphicon glyphicon-trash"></span> Remove
                                     </button>
                                 </td>
+                                <td *ngIf="item.verificationGreen"><span style="color: green;font-style:bold" >{{item.status}}</span></td>
+                                <td *ngIf="item.verificationRed"> <span style="color: RED" >{{item.status}}</span></td>
+                                 <td  *ngIf="item.verificationYello"><span style="color: blue">{{item.status}}</span>
+                                
+                                </td>
                             </tr>
-                            <tr colspan="4">
-                           <td  style="text-align: center" colspan="4">
-                                <button class="btn btn-success btn-xs"  (click)=" onChange()"><span class="glyphicon glyphicon-upload"></span>Upload All</button>
-                           </td>
+                            <tr colspan="5">
+                                <td style="text-align: center" colspan="5">
+                                    <button class="btn btn-success btn-xs" (click)=" onChange()"><span class="glyphicon glyphicon-upload"></span>Upload All</button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
+                    <div *ngIf="fileSaved">
+                        <p><span style="color: green">File saved successfully</span></p>
+                    </div>
                 </fieldset>
+                 
+                <!--<pdf-viewer src="https://vadimdez.github.io/ng2-pdf-viewer/pdf-test.pdf" style="display: block;"></pdf-viewer>-->
+             
 
 
+                <button class="btn rounded-btn" style="margin-right:474px" (click)="reset()">Reset</button>
 
-                <button class="btn rounded-btn" style="margin-right:474px" (click)="reset()">Reset</button> 
-               
-                <button class="btn rounded-btn"  (click)="onSubmit(mortgageEligibiltyModel)">Next</button>
+                <button class="btn rounded-btn" (click)="onSubmit(mortgageEligibiltyModel)">Next</button>
 
                 <!--<p>Form value: {{ mortgageEligibiltyModel.value | json }}</p>-->
 
