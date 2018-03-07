@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Rx';
 import { LoginModel } from "../login/login.model";
 import { SignupModel } from "../signup/signup.model";
 import { UserInfo } from "../layout/dashboard/userinfo";
-
+import { DcoSignStatus } from "../layout/mortgagedocuments/DocuSignStatus";
 
 @Injectable()
 export class LoginService {
@@ -16,9 +16,7 @@ export class LoginService {
   private uploadHeader = new Headers({  'Accept': 'application/json' });
   options:RequestOptions = new RequestOptions({ headers: this.uploadHeader });
   
- 
-  
-
+   returnSignStatus : DcoSignStatus = null;
    
    selectedUser: LoginModel;
    loginObj:LoginModel=null;
@@ -122,6 +120,13 @@ saveRegistrationDetails(signupModel: SignupModel): Observable<SignupModel> {
         
         return this.fileSaved || { };
     }
-   
+
+    uploadFileToDocuSign(formData:FormData): Observable<DcoSignStatus> {
+      console.log("Service uploadfiletodocuSign");
+      console.log("formData is >>>>>>>>>>>"+formData.has("file"));
+       return this.http.post('https://DocuSignExample.cfapps.io/docSignFileUpload', formData, this.options)
+            .map(response => response.json())
+            .catch(error => Observable.throw(error));
+    }
 
 }

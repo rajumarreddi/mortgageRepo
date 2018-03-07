@@ -18,16 +18,20 @@
 
 
         <a [routerLink]="['/mortgagedocuments']" [routerLinkActive]="['router-link-active']" class="list-group-item" style="pointer-events: none; cursor: default;">
-            <i class="fa fa-fw fas fa-calculator"></i>&nbsp;{{ 'Choose Mortgage Plans' | translate }}
+            <i class="fa fa-fw fas fa-calculator"></i>&nbsp;{{ 'Choose Mortgage' | translate }}
         </a>
 
          <a [routerLink]="['/mortgagepreview']" [routerLinkActive]="['router-link-active']" class="list-group-item" style="pointer-events: none; cursor: default;">
-            <i class="fa fa-fw fas fa-calculator"></i>&nbsp;{{ 'Mortgage Preview' | translate }}
+            <i class="fa fa-fw fas fa-eye"></i>&nbsp;{{ 'Mortgage Preview' | translate }}
         </a>
         
          <a [routerLink]="['/mortgagesubmission']" [routerLinkActive]="['router-link-active']" class="list-group-item" style="pointer-events: none; cursor: default;">
             <i class="fa fa-fw fas fa-home"></i>&nbsp;{{ 'Submit Mortgage' | translate }}
 
+        </a>
+
+        <a [routerLink]="['/mortgagesuccess']" [routerLinkActive]="['router-link-active']" class="list-group-item" style="pointer-events: none; cursor: default;">
+            <i class="fa fa-fw fas fa-check"></i>&nbsp;{{ 'Success Mortgage' | translate }}
         </a>
 
        

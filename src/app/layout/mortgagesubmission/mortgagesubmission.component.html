@@ -1,21 +1,180 @@
 <div [@routerTransition]>
-     
-    <h2 style="color:#d81e05">Mortgage Submission</h2>
 
-   <div class="row">
-        <div class="col-lg-6">
-            <!--(ngSubmit)="onSubmit(mortgageEligibiltyModel)"-->
-            <form [formGroup]="mortgageDocumentsModel" novalidate>
+    <h2 style="color:#d81e05">Sign & Submit Mortgage Application</h2>
+    <br />
+    <div class="row">
+        <div class="col-lg-6" >
+                <form [formGroup]="mortgageSubmissionModel" novalidate>
+                <!-- <fieldset class="form-group" >
+                    <label>Select Verification Document</label>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <select class="form-control" formControlName="documentType" (ngModelChange)="onDocumentChange($event)">
+                                <option label="Select One" selected></option>
+                                <option *ngFor="let document of documentsArr" [ngValue]="document">{{document}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="file" (change)="onChange1($event)" required class="form-control " name="attach_file" id="attach_file">
+                        </div>
+                    </div>
+                </fieldset> -->
 
-                    <!--<fieldset class="form-group">
-                        <label class="center-block">Goal <span style="color: red">*</span> </label>
-                        <select class="form-control" formControlName="goal">
-              <option label="Select One"  selected></option>
-                <option *ngFor="let goal of goalArr" [ngValue]="goal">{{goal}}</option>
-                 </select>
-                    </fieldset>-->
+                <fieldset class="form-group">
+                        <label>Select Document</label>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <select class="form-control" formControlName="documentType" (ngModelChange)="onDocumentChange($event)">
+                      <option label="Select One"  selected></option>
+                     <option *ngFor="let document1 of documentsArr1" [ngValue]="document1" >{{document1}}</option>
+                   </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="file" (change)="onChange1($event)" required class="form-control " name="attach_file" id="attach_file">
+                            </div>
+                        </div>
+    
+                    </fieldset>
+
+
+
+
+
+
+                <fieldset class="form-group">
+                    <label *ngIf="mortgageDocumentArr.length > 0">Uploaded Docs</label>
+                    <table class="table table-bordered table-striped" border="1" *ngIf="mortgageDocumentArr.length > 0">
+                        <thead>
+                            <tr>
+                                <th width="30%">Document</th>
+                                <th width="30%">Name</th>
+                                <th>Size</th>
+                                <th>Action</th>
+                                <th>Verification Status</th>
+                                <!--<th>Progress</th>
+                                <th>Status</th>-->
+                                <!--<th>Actions</th>-->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of mortgageDocumentArr">
+                                <td>{{ item?.documentTitle }}</td>
+                                <td>{{ item?.file?.name }}</td>
+                                <td *ngIf="item" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+
+                                <!--<td *ngIf="uploader.isHTML5">
+                                    <div class="progress" style="margin-bottom: 0;">
+                                        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                                    </div>
+                                </td>-->
+                                <!--<td class="text-center">
+                                    <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                    <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                    <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                                </td>-->
+                                <td nowrap>
+                                    <!-- <button type="button" class="btn btn-success btn-xs" (click)="removeUploadDoc(item)" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                                        <span class="glyphicon glyphicon-upload"></span> Remove
+                                    </button>
+                                   <button type="button" class="btn btn-warning btn-xs" (click)="item.cancel()" [disabled]="!item.isUploading">
+                                        <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                    </button>-->
+                                    <button type="button" class="btn btn-danger btn-xs" (click)="removeUploadDoc(item)">
+                                        <span class="glyphicon glyphicon-trash"></span> Remove
+                                    </button>
+                                </td>
+                                <td *ngIf="item.verificationGreen">
+                                    <span style="color: green;font-style:bold">{{item.status}}</span>
+                                </td>
+                                <td *ngIf="item.verificationRed">
+                                    <span style="color: RED">{{item.status}}</span>
+                                </td>
+                                <td *ngIf="item.verificationYello">
+                                    <span style="color: blue">{{item.status}}</span>
+
+                                </td>
+                            </tr>
+                            <tr colspan="5">
+                                <td style="text-align: center" colspan="5">
+                                    <button class="btn btn-success btn-xs" (click)=" onChange()">
+                                        <span class="glyphicon glyphicon-upload"></span>Upload All</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div *ngIf="fileSaved">
+                        <p>
+                            <span style="color: green">File saved successfully</span>
+                        </p>
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label>Upload Mortgage Application for eSignature <span style="color: red">*</span></label>
+                    <div class="form-row">
+                        
+                            <input type="file" (change)="onChange2($event)" required class="form-control " name="attach_file" id="attach_file">
+                        
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label *ngIf="mortgageDocuSignArr.length > 0">Uploaded Document</label>
+                    <table class="table table-bordered table-striped" border="1" *ngIf="mortgageDocuSignArr.length > 0">
+                        <thead>
+                            <tr>
+                                <th width="30%">Name</th>
+                                <th>Size</th>
+                                <th>Action</th>
+                                <!-- <th>Verification Status</th> -->
+                                <!--<th>Progress</th>
+                                <th>Status</th>-->
+                                <!--<th>Actions</th>-->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of mortgageDocuSignArr">
+                                <td>{{ item?.file?.name }}</td>
+                                <td *ngIf="item" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                                
+                                <!--<td *ngIf="uploader.isHTML5">
+                                    <div class="progress" style="margin-bottom: 0;">
+                                        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                                    </div>
+                                </td>-->
+                                <!--<td class="text-center">
+                                    <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                    <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                    <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                                </td>-->
+                                <td nowrap>
+                                    <!-- <button type="button" class="btn btn-success btn-xs" (click)="removeUploadDoc(item)" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                                        <span class="glyphicon glyphicon-upload"></span> Remove
+                                    </button>
+                                   <button type="button" class="btn btn-warning btn-xs" (click)="item.cancel()" [disabled]="!item.isUploading">
+                                        <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                    </button>-->
+                                    <button type="button" class="btn btn-danger btn-xs" (click)="removeUploadDoc(item)">
+                                        <span class="glyphicon glyphicon-trash"></span> Remove
+                                    </button>
+                                </td>
+                                <!-- <td *ngIf="item.verificationGreen"><span style="color: green;font-style:bold" >{{item.status}}</span></td> -->
+                                <!-- <td *ngIf="item.verificationRed"> <span style="color: RED" >{{item.status}}</span></td> -->
+                                 <!-- <td  *ngIf="item.verificationYello"><span style="color: blue">{{item.status}}</span></td> -->
+                                
+                                
+                            </tr>
+                            <tr colspan="5">
+                                <td style="text-align: center" colspan="5" *ngIf="returnSignStatus">
+                                    <button class="btn btn-success btn-xs" (click)=" onClickSignatureBtn()"><span class="glyphicon glyphicon-upload"></span>eSignature</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+                <button class="btn rounded-btn" style="margin-right:474px" (click)="onSubmitBack(mortgageSubmissionModel)">Back</button> 
+                
             </form>
         </div>
-   </div>
+    </div>
 </div>
-
