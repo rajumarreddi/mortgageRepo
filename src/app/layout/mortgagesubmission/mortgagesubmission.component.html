@@ -166,15 +166,16 @@
                             </tr>
                             <tr colspan="5">
                                 <td style="text-align: center" colspan="5" *ngIf="returnSignStatus">
-                                    <button class="btn btn-success btn-xs" (click)=" onClickSignatureBtn()"><span class="glyphicon glyphicon-upload"></span>eSignature</button>
+                                    <button class="btn btn-success btn-xs"  (click)=" onClickSignatureBtn()"><span class="glyphicon glyphicon-upload"></span>eSignature</button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </fieldset>
-                <button class="btn rounded-btn" style="margin-right:474px" (click)="onSubmitBack(mortgageSubmissionModel)">Back</button> 
+                <button class="btn rounded-btn" style="background-color: red;color: white;"  (click)="onSubmitBack(mortgageSubmissionModel)">Back</button> 
                 
             </form>
+            
         </div>
     </div>
 </div>

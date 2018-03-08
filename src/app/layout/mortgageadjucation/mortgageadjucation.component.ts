@@ -61,7 +61,18 @@ export class MortgageadjucationComponent implements OnInit {
             firstName: new FormControl(this.mortgageEligibilityModel.name, [Validators.required]),
             lastName: new FormControl('', [Validators.required]),
             expenses: new FormControl('', [Validators.required]),
-dateofbirth:new FormControl(this.mortgageEligibilityModel.dateofbirth, [Validators.required]),
+dateofbirth:new FormControl('', [Validators.required]),
+scotiabankempornot:new FormControl('', [Validators.required]),
+coapplicant:new FormControl('', [Validators.required]),
+backrupty:new FormControl('', [Validators.required]),
+canadiancitizen:new FormControl('', [Validators.required]),
+maritalstatus:new FormControl('', [Validators.required]),
+
+
+
+
+
+
 
         });
     }

@@ -12,5 +12,10 @@ export class MortgageAdjucationModel{
     lastName:string;
     expenses:string;
     dateofbirth:string;
+    scotiabankempornot:string;
+    coapplicant:string;
+    backrupty:string;
+    canadiancitizen:string;
+    maritalstatus:string;
 
 }

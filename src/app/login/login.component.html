@@ -5,9 +5,9 @@
             <h1><i style="font-size:65px">e</i>Mortgage</h1>
            <!--(ngSubmit)="onSubmit(loginModel)"-->
             <form [formGroup]="loginModel"  novalidate > 
-                 <div *ngIf="alertFlag">
+                 <!-- <div *ngIf="alertFlag">
       Invalid User. Please try again...
-    </div>
+    </div> -->
                 <div class="form-content">
                     <div class="form-group" id="userid_div">
                           <input formControlName="emailId" placeholder="Email" [pattern]="emailPattern" class="form-control input-underline input-lg">
@@ -56,6 +56,7 @@
                 <!--<a class="btn rounded-btn" [routerLink]="['/login']">Google Signin</a>-->
                <a class="btn rounded-btn" (click)="googleLogin()">Google Signin</a>
             </form>
+            
         </div>
     </div>
 </div>
