@@ -12,6 +12,7 @@ import { MortgageSubmissionDocumentsModel } from "./mortgagesubmissiondocuments.
 import { Router } from '@angular/router';
 import { Http, Response, Headers, BaseRequestOptions, RequestOptions} from '@angular/http';
 import { MortgageSubmissionModel } from './mortgagesubmission.model';
+import { MortgageSubmissionFinalModel } from './mortgagesubmissionfinal.model';
 
 @Component({
   selector: 'app-mortgagesubmission',
@@ -34,8 +35,11 @@ export class MortgagesubmissionComponent implements OnInit {
   allFiles : File[] = [];
   docuSignFiles : File[] = [];
   mortgageSubmissionModel : FormGroup;
+  mortgagesuccessfinalmodel:MortgageSubmissionFinalModel=new MortgageSubmissionFinalModel();
+  mortgagesuccessflag:boolean=false;
 
-  constructor(private fb: FormBuilder, private mortgageEligibilityService: MortgageEligibilityService, public router: Router, private loginService: LoginService,
+  constructor(private fb: FormBuilder, private mortgageEligibilityService: MortgageEligibilityService, public router: Router,
+     private loginService: LoginService,
     private loginDataService: LoginDataService) { }
 
   ngOnInit() {
@@ -76,9 +80,19 @@ export class MortgagesubmissionComponent implements OnInit {
   }
 
   onClickSignatureBtn() {
+    
     console.log("before hitting service ---> " + this.returnSignStatus.docuSgingURL);
     window.open(this.returnSignStatus.docuSgingURL, "_blank");
     console.log("After hitting service ---> " + this.returnSignStatus.statusComleted);
+    this.mortgagesuccessfinalmodel.dob='1987-12-12';
+    this.mortgagesuccessfinalmodel.email='adminmuk@gmail.com';
+    this.mortgagesuccessfinalmodel.name='adminmuk';
+    this.mortgagesuccessfinalmodel.mortgagePlan='Buy my new home';
+    this.mortgagesuccessfinalmodel.grossIncome='68592';
+    this.mortgagesuccessfinalmodel.isDataSaved=false;
+   
+    this.loginService.saveMortgageDetails(this.mortgagesuccessfinalmodel).subscribe(returnData => this.mortgagesuccessflag = returnData);
+
     this.router.navigate(['/mortgagesuccess']);
   }
 

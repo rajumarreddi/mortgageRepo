@@ -8,6 +8,7 @@ import { LoginModel } from "../login/login.model";
 import { SignupModel } from "../signup/signup.model";
 import { UserInfo } from "../layout/dashboard/userinfo";
 import { DcoSignStatus } from "../layout/mortgagedocuments/DocuSignStatus";
+import { MortgageSubmissionFinalModel } from '../layout/mortgagesubmission/mortgagesubmissionfinal.model';
 
 @Injectable()
 export class LoginService {
@@ -97,6 +98,22 @@ saveRegistrationDetails(signupModel: SignupModel): Observable<SignupModel> {
         console.log("After userinfo hitting the service ---> "+this.userInfo.dataSaved);
               return this.signupModelObj || { };
     }
+
+
+
+    saveMortgageDetails(mortgageSubmissionFinalModel: MortgageSubmissionFinalModel): Observable<boolean> {
+      console.log("mortgage save service"+mortgageSubmissionFinalModel.email);
+      let mortgageSaveURL = `https://mortgage-app.cfapps.io/saveMortgageData​`;
+      
+        return this.http
+        .post(mortgageSaveURL, mortgageSubmissionFinalModel, this.options)
+       .map(response=>response.json())
+        .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+    }
+  
+  
+     
+    
 
 
 
