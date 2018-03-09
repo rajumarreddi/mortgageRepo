@@ -175,6 +175,4 @@ for(let obj in this.mortgageDocumentArr){
 
 }
 
-
-
 }

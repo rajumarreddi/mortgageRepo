@@ -19,17 +19,16 @@ export class AuthGuard implements CanActivate {
 
     //canActivate() {
         canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-            console.log("In canActivate()");
-          //  const isLoggedIn:boolean = this.loginService.userLoggedIn;
-            console.log("lpognin data service value si>>>>>>>"+this.loginDataService.userLoggedIn);
+            console.log("========In canActivate()==============");
+           console.log("In AuthGuard::canActivate() loginDataService.userLoggedIn Value :: >>>>>>"+this.loginDataService.userLoggedIn);
 
             //console.log("valid user"+this.loginService.loginObj.validUser);
         if (this.loginDataService.userLoggedIn) {
-             console.log("in canActivate in if"+this.loginDataService.userLoggedIn);
+             console.log("In AuthGuard::canActivate() in if"+this.loginDataService.userLoggedIn);
             // this.router.navigate(['/dashboard']);
             return true;
         }else{
-             console.log("in canActivate in else"+this.loginDataService.userLoggedIn);
+             console.log("In AuthGuard::canActivate() in else"+this.loginDataService.userLoggedIn);
              this.router.navigate(['/login']);
             return false;
         }

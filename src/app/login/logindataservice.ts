@@ -17,4 +17,5 @@ export class LoginDataService{
     loginModel:LoginModel;
     selectedMLSId:string;
     propertyData: Array<any>;
+     loginObj:LoginModel;
 }

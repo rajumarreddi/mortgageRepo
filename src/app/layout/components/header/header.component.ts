@@ -33,18 +33,26 @@ findimage:boolean;
                 window.innerWidth <= 992 &&
                 this.isToggled()
             ) {
-                this.toggleSidebar();
+                this.toggleSidebar(); 
             }
         });
-         console.log("service in header comp"+this.loginService.loginObj);
-        this.loginModel=this.loginService.loginObj;
+         console.log("HeaderComponent this.loginService.loginObj ======> "+this.loginService.loginObj);
+          console.log("HeaderComponent this.loginDataService.loginObj ======> "+this.logindataService.loginObj);
+        //this.loginModel=this.loginService.loginObj;
+        this.loginModel=this.logindataService.loginObj;
      
         console.log("name in header comp"+this.name);
     }
 
     ngOnInit() {
-         this.name=this.logindataService.userName;
-         this.image=this.logindataService.image;
+          this.name=this.logindataService.userName;
+          this.image=this.logindataService.image;
+       
+        //   this.name="RAJUUUUU";
+        //   this.image=" https://s3-us-west-2.amazonaws.com/cdn.simplyrets.com/properties/trial/home9.jpg";
+
+
+
          if(this.image!=null){
             this.findimage=true;
          }else{
@@ -74,6 +82,8 @@ findimage:boolean;
         localStorage.setItem('userData', '');
         localStorage.clear();
         this.loginService.loginObj.validUser=false;
+        this.logindataService.userLoggedIn=false;
+         this.logindataService.loginObj.validUser=false;
         this.logindataService.userLoggedIn=false;
     }
 

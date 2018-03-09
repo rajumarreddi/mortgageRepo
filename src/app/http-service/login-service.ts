@@ -9,6 +9,7 @@ import { SignupModel } from "../signup/signup.model";
 import { UserInfo } from "../layout/dashboard/userinfo";
 import { DcoSignStatus } from "../layout/mortgagedocuments/DocuSignStatus";
 import { MortgageSubmissionFinalModel } from '../layout/mortgagesubmission/mortgagesubmissionfinal.model';
+import { LoginDataService } from "../login/logindataservice";
 
 @Injectable()
 export class LoginService {
@@ -25,8 +26,8 @@ export class LoginService {
    userInfo:UserInfo=null
    fileSaved:boolean=false;
   public userLoggedIn:boolean=false;
-  constructor(private http: Http) {
-  }
+  constructor(private http: Http, private loginDataService:LoginDataService) {
+  } 
 
   saveSelectedLoginModel(selectedUser: LoginModel) {
     this.selectedUser = selectedUser;
@@ -68,6 +69,7 @@ saveRegistrationDetails(signupModel: SignupModel): Observable<SignupModel> {
    private extractLoginData(response:Response) {
         this.loginObj = response.json();
         console.log("After hitting service ---> "+this.loginObj.validUser+this.loginObj.name);
+        this.loginDataService.loginObj =  this.loginObj;
        // this.userLoggedIn=this.loginObj.validUser;
               return this.loginObj || { };
     }

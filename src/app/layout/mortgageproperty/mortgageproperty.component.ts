@@ -9,6 +9,8 @@ import { MortgageModel } from "../mortgage/mortgage.model";
 import { MortgageService } from "../../http-service/mortgage-service";
 import { MortgageEligibiltyModel } from "../mortgageeligibility/mortgageeligibilty.model";
 import { LoginDataService } from "../../login/logindataservice";
+import {DomSanitizer} from "@angular/platform-browser";
+
 
 @Component({
   selector: 'app-mortgageproperty',
@@ -30,15 +32,16 @@ purposeofLoanArr:string[];
        showTable:boolean = false;
 
        showMap:boolean = false;
-       postalCode:string = '77096';
-
+       postalcode:string = '77096';
+       googleMapsAddress:string = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyBF4vo3a6ZGEBUH4nmunVeMu3EWLxef6Wc&q=';
+       mapsUrl;
        selectedPropertyDetails:MortgagePropertyModel[]=[];
         mortgageProp:MortgagePropertyModel=new MortgagePropertyModel();
 
 //mortgageeligibilitymodel:MortgageEligibiltyModel;
 
   constructor(private fb:FormBuilder,private mortgageEligibilityService:MortgageEligibilityService,public router: Router,
-  private mortgageService:MortgageService, private loginDataService:LoginDataService) { 
+  private mortgageService:MortgageService, private loginDataService:LoginDataService,private domSanitizer : DomSanitizer) { 
     this.propertyData = new Array<any>();
      this.purposeofLoanArr=this.mortgageEligibilityService.purposeofLoan;
       this.showProperties();
@@ -167,13 +170,13 @@ purposeofLoanArr:string[];
         showmap(){
           if((null != this.returnData && this.returnData != undefined)){
             this.showMap = true;
+            this.postalcode = this.returnData.postalCode;
+            this.mapsUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(this.googleMapsAddress+this.postalcode);
           }//else if(null != this.propertyData && this.propertyData != undefined){
             //this.showMap = true;
          // }
         }
-
-
-        
+            
 
 
         populateModelObj(arr:MortgagePropertyModel){
